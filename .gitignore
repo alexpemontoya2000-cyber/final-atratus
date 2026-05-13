@@ -1,0 +1,51 @@
+# Dependencies
+**/node_modules/
+**/.pnpm-store/
+**/.pnp.*
+
+# Next.js build
+**/.next/
+**/out/
+**/build/
+**/dist/
+
+# Vercel
+**/.vercel/
+
+# Environment
+**/.env
+**/.env.*
+!**/.env.example
+
+# Logs
+**/*.log
+**/npm-debug.log*
+**/yarn-debug.log*
+**/yarn-error.log*
+
+# Editor
+**/.DS_Store
+**/.idea/
+**/.vscode/*
+!**/.vscode/extensions.json
+**/*.swp
+**/*.swo
+
+# TypeScript
+**/*.tsbuildinfo
+**/next-env.d.ts
+
+# Testing
+**/coverage/
+
+# Misc
+**/.turbo/
+**/.cache/
+
+# Temp screenshots
+*.png
+!imagenes/**/*.png
+!web/public/**/*.png
+
+# Lock files — keep
+# (pnpm-lock.yaml and package-lock.json se incluyen, importantes para builds reproducibles)

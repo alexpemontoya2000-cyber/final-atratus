@@ -1,0 +1,177 @@
+@import "tailwindcss";
+
+/* ============================================================
+   ATRATUS DESIGN TOKENS — Tailwind 4 CSS-first config
+   Replica el sistema visual de atratuscolombia.com
+   ============================================================ */
+
+@theme {
+  /* COLORES — paleta confirmada de pantalla */
+  --color-hueso: #efebe3;
+  --color-hueso-light: #f5f2ec;
+  --color-hueso-dark: #e6e2d8;
+  --color-monte: #0e0e0e;
+  --color-monte-soft: #1a1a1a;
+  --color-carbon: #3d3d3d;
+  --color-piedra: #c8c2b5;
+  --color-niebla: #8a847a;
+
+  /* Acentos por rol (Shark Tank) */
+  --color-atratus-verde: #1f3d2e;
+  --color-atratus-verde-soft: #2d5341;
+  --color-deep-blue: #1b2a41;
+  --color-seagreen: #5c8a7b;
+  --color-rojo-atratus: #a6362b;
+  --color-beige-natural: #c8b294;
+
+  /* Status (utilitarios) */
+  --color-success: #5c8a7b;
+  --color-danger: #a6362b;
+
+  /* TIPOGRAFÍA */
+  --font-display: "Archivo Black", "Anton", system-ui, sans-serif;
+  --font-body: "Plus Jakarta Sans", "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", "Geist Mono", ui-monospace, monospace;
+
+  /* RADIOS */
+  --radius-pill: 9999px;
+  --radius-card: 24px;
+  --radius-card-sm: 16px;
+}
+
+/* ============================================================
+   BASE — light mode con fondo hueso (NUNCA blanco puro)
+   Atratus no es SaaS, no usa dark mode
+   ============================================================ */
+
+:root {
+  --bg-base: var(--color-hueso);
+  --bg-card: #ffffff;
+  --bg-elevated: var(--color-hueso-light);
+  --text-primary: var(--color-monte);
+  --text-secondary: var(--color-carbon);
+  --text-tertiary: var(--color-niebla);
+  --border-subtle: rgba(14, 14, 14, 0.08);
+  --border-default: rgba(14, 14, 14, 0.12);
+
+  --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+  --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+html {
+  background: var(--bg-base);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+}
+
+body {
+  background: var(--bg-base);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  letter-spacing: -0.005em;
+  min-height: 100vh;
+}
+
+/* Display tokens — tracking negativo en titulares grandes = sensación premium */
+.display {
+  font-family: var(--font-display);
+  letter-spacing: -0.025em;
+  line-height: 0.95;
+  text-wrap: balance;
+}
+
+/* Body text: pretty wrap evita líneas viudas */
+p {
+  text-wrap: pretty;
+}
+
+/* Números tabulares en métricas */
+.metric,
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Selección con verde Atratus suave */
+::selection {
+  background: var(--color-atratus-verde);
+  color: var(--color-hueso);
+}
+
+/* Scrollbar discreta */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-hueso);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-piedra);
+  border-radius: 9999px;
+  border: 2px solid var(--color-hueso);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-niebla);
+}
+
+/* ============================================================
+   ANIMACIONES — sutiles, sin SaaS-bounce
+   ============================================================ */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slowZoom {
+  from { transform: scale(1.05); }
+  to { transform: scale(1); }
+}
+
+@keyframes pulseDot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s var(--ease-out-expo) both;
+}
+
+.animate-fade-in {
+  animation: fadeIn 1s var(--ease-out-expo) both;
+}
+
+.animate-slow-zoom {
+  animation: slowZoom 10s ease-out both;
+}
+
+.animate-pulse-dot {
+  animation: pulseDot 2s ease-in-out infinite;
+}
+
+/* Delays para staggered entrances */
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
+.delay-500 { animation-delay: 0.5s; }
+.delay-700 { animation-delay: 0.7s; }
+.delay-1000 { animation-delay: 1s; }
