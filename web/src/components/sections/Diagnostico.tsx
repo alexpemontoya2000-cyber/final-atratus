@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { RoleBadge } from "@/components/ui/RoleBadge";
 import { StatCard } from "@/components/ui/StatCard";
 
@@ -260,77 +259,13 @@ export function Diagnostico() {
           </p>
         </div>
 
-        {/* Beat visual — el cliente que se va */}
-        <div className="mt-20 md:mt-28 grid grid-cols-12 gap-x-8 gap-y-10 items-center">
-          <div className="col-span-12 lg:col-span-5 order-2 lg:order-1">
-            <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl bg-monte/5">
-              <Image
-                src="/atratus/marca/cliente-se-aleja.png"
-                alt="Caminante perdiéndose en la niebla del bosque colombiano"
-                fill
-                quality={85}
-                sizes="(max-width: 1024px) 100vw, 40vw"
-                className="object-cover"
-              />
-              <div
-                className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-monte/45 to-transparent"
-                aria-hidden
-              />
-              <div className="absolute bottom-5 left-5 right-5">
-                <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-white/80">
-                  El 70% en una imagen
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div className="col-span-12 lg:col-span-7 order-1 lg:order-2">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-niebla mb-4">
-              Lo que el dato no muestra
-            </p>
-            <h3
-              className="display text-monte"
-              style={{
-                fontSize: "clamp(1.75rem, 4vw, 3.25rem)",
-                lineHeight: 1.05,
-                letterSpacing: "-0.025em",
-                textWrap: "balance",
-              }}
-            >
-              Cada cliente que no volvió tuvo un nombre, una mochila y una
-              salida planeada para el sábado.
-            </h3>
-            <p className="mt-6 text-base md:text-lg text-carbon leading-relaxed max-w-xl">
-              Pagaron por una chaqueta. La estrenaron una vez. Después se
-              fueron sin recibir un correo, sin volver a ver la marca, sin
-              sentirse parte del monte de los buenos.
-            </p>
-            <p className="mt-4 text-base md:text-lg text-monte/55 leading-relaxed max-w-xl">
-              Y es que el sistema actual los trata como tráfico. Y el tráfico
-              no se queda.
-            </p>
-          </div>
-        </div>
-
         {/* ============== BLOQUE B · DOFA + CAME ============== */}
         <div className="mt-24 md:mt-32">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-niebla mb-4">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-niebla mb-6">
             Cómo está el terreno
           </p>
-          <h3
-            className="display text-monte max-w-3xl"
-            style={{
-              fontSize: "clamp(1.75rem, 4vw, 3rem)",
-              lineHeight: 1.05,
-              letterSpacing: "-0.025em",
-              textWrap: "balance",
-            }}
-          >
-            Cuatro casillas. Lo que hay que mantener, lo que hay que tomar, lo
-            que hay que arreglar, y lo que toca esquivar.
-          </h3>
 
-          <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
             {dofa.map((cuad) => (
               <article
                 key={cuad.label}

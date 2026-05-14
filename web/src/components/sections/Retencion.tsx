@@ -1,5 +1,4 @@
 import { RoleBadge } from "@/components/ui/RoleBadge";
-import { LayerCard } from "@/components/ui/LayerCard";
 
 /* ============================================================
    §4 SISTEMA DE RETENCIÓN · Director de RevOps
@@ -35,38 +34,15 @@ const flujosRecencia = [
   },
 ];
 
-const accionesEscalabilidad = [
-  {
-    n: "01",
-    titulo: "Cascada en el checkout",
-    descripcion:
-      "Justo antes de pagar, el carrito ofrece el cuellito técnico ($29.900 con dto). Si lo agrega, aparece el camibuso al 15% off. Tres prendas en un solo envío.",
-    delta: "Ticket sube ~78%",
-    sub: "de $210K a ~$375K",
-    note: "El descuento se paga solo: dos envíos menos que la marca ya iba a hacer.",
-    color: "var(--color-seagreen)",
-  },
-  {
-    n: "02",
-    titulo: "Referidos con dos beneficios",
-    descripcion:
-      "Cada cliente recibe un código para compartir. El amigo recibe 10% de descuento. Quien refirió recibe 15% en su próxima compra. Dos pájaros, un código.",
-    delta: "CAC ~$50K",
-    sub: "sin ampliar presupuesto de pauta",
-    note: "Trae clientes nuevos y reactiva al original al mismo tiempo.",
-    color: "var(--color-atratus-verde)",
-  },
-  {
-    n: "03",
-    titulo: "Correo automático a los 14 días",
-    descripcion:
-      "Catorce días después de cada compra, se dispara un correo con el producto complementario. Si compró chaqueta, se le ofrece el pantalón técnico. 10% off válido 72 horas.",
-    delta: "Cross-sell automático",
-    sub: "se configura una vez y corre solo",
-    note: "Firmado por Toña o Mate, no por la marca.",
-    color: "var(--color-deep-blue)",
-  },
-];
+const accionEscalabilidad = {
+  titulo: "Cascada en el checkout",
+  descripcion:
+    "Justo antes de pagar, el carrito ofrece el cuellito técnico ($29.900 con dto). Si lo agrega, aparece el camibuso al 15% off. Tres prendas en un solo envío.",
+  delta: "Ticket sube ~78%",
+  sub: "de $210K a ~$375K",
+  note: "El descuento se paga solo: dos envíos menos que la marca ya iba a hacer.",
+  color: "var(--color-seagreen)",
+};
 
 export function Retencion() {
   return (
@@ -120,7 +96,7 @@ export function Retencion() {
               aria-hidden
             />
             <span className="text-[11px] font-semibold uppercase tracking-[0.22em] text-seagreen">
-              Bloque A · Las tres capas que sostienen el sistema
+              A · STACK
             </span>
           </div>
 
@@ -132,106 +108,83 @@ export function Retencion() {
             </span>
           </p>
 
-          <div className="relative grid grid-cols-1 lg:grid-cols-3 gap-5 lg:gap-6">
-            <LayerCard
-              layerNumber="01"
-              layerName="COMPRAR"
-              layerSubtitle="El cliente entra, paga, recibe. La tienda sirve un solo objetivo: convertir sin fricción."
-              tools={[
-                {
-                  name: "Shopify",
-                  role: "Tienda + checkout + catálogo + inventario.",
-                  cost: "$29 USD/mes",
-                  note: "Integración nativa con Instagram Shopping.",
-                },
-                {
-                  name: "Wompi",
-                  role: "Pasarela local Bancolombia. Tarjetas, PSE, Nequi, Daviplata.",
-                  cost: "2,9% + $900 / txn",
-                  note: "Respaldo PayU para expansión LATAM.",
-                },
-              ]}
-              status="Listo · 2 semanas de setup"
-              accentColor="verde"
-            />
-            <LayerCard
-              layerNumber="02"
-              layerName="CONECTAR"
-              layerSubtitle="El cliente vuelve, recompra, recomienda. Aquí vive el motor real de ingresos."
-              tools={[
-                {
-                  name: "Mailchimp / Brevo",
-                  role: "Email automatizado, CRM, lead scoring.",
-                  cost: "$0–$25 USD/mes",
-                  note: "Flujos de bienvenida, win-back, reactivación.",
-                },
-                {
-                  name: "Meta Pixel + Audiences",
-                  role: "Retargeting, lookalikes, atribución.",
-                  cost: "Gratis (en Meta Ads)",
-                  note: "Convierte visitantes en audiencias reactivables.",
-                },
-              ]}
-              status="Listo · 1 semana de setup"
-              accentColor="seagreen"
-            />
-            <LayerCard
-              layerNumber="03"
-              layerName="MEDIR"
-              layerSubtitle="El equipo decide con datos. Una pantalla, una verdad, una reunión semanal corta."
-              tools={[
-                {
-                  name: "Google Analytics 4",
-                  role: "Tráfico, fuentes, comportamiento, embudo.",
-                  cost: "Gratis",
-                  note: "Conectado a Shopify por GTM.",
-                },
-                {
-                  name: "Looker Studio",
-                  role: "Dashboard · 3 pestañas: Salud · Email · North Star.",
-                  cost: "Gratis",
-                  note: "Une Mailchimp + GA4 + Shopify en una pantalla.",
-                },
-              ]}
-              status="Listo · 3 días de setup"
-              accentColor="azul"
-            />
-          </div>
+          <div className="rounded-2xl border border-monte/10 bg-white overflow-hidden">
+            {/* Header tabla */}
+            <div className="hidden lg:grid grid-cols-12 gap-4 px-6 py-4 border-b border-monte/8 bg-hueso-light">
+              <div className="col-span-3 text-[10px] font-semibold uppercase tracking-[0.18em] text-niebla">
+                Capa
+              </div>
+              <div className="col-span-6 text-[10px] font-semibold uppercase tracking-[0.18em] text-niebla">
+                Herramientas
+              </div>
+              <div className="col-span-3 text-[10px] font-semibold uppercase tracking-[0.18em] text-niebla">
+                Setup · costo
+              </div>
+            </div>
 
-          {/* Strip resumen del stack */}
-          <div className="mt-10 rounded-2xl border border-monte/10 bg-white p-6 md:p-7">
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-              {[
-                { num: "6", label: "herramientas conectadas", sub: "una sola contraseña en mente" },
-                { num: "~$54", unit: "USD/mes", label: "costo fijo del sistema", sub: "Shopify + Brevo · resto gratis" },
-                { num: "~4", unit: "semanas", label: "hasta el sistema encendido", sub: "2 setup + 2 calibración" },
-                { num: "0", label: "plataformas nuevas que aprender", sub: "todas son industria-estándar 2026" },
-              ].map((s) => (
-                <div key={s.label}>
-                  <p
-                    className="display text-monte tabular flex items-baseline gap-1"
-                    style={{
-                      fontSize: "clamp(1.75rem, 2.6vw, 2.5rem)",
-                      lineHeight: 1,
-                      letterSpacing: "-0.03em",
-                    }}
-                  >
-                    {s.num}
-                    {s.unit && (
-                      <span className="text-sm font-medium text-carbon">
-                        {s.unit}
-                      </span>
-                    )}
-                  </p>
-                  <p className="mt-2 text-sm text-carbon leading-snug">
-                    {s.label}
-                    <span className="block text-niebla text-xs mt-0.5">
-                      {s.sub}
+            {[
+              {
+                n: "01",
+                nombre: "COMPRAR",
+                resumen: "El cliente entra, paga, recibe.",
+                herramientas: "Shopify · Wompi (PSE, Nequi, Daviplata)",
+                setup: "2 semanas · $29 USD/mes",
+                color: "var(--color-atratus-verde)",
+              },
+              {
+                n: "02",
+                nombre: "CONECTAR",
+                resumen: "El cliente vuelve, recompra, recomienda.",
+                herramientas: "Mailchimp · Brevo · Meta Pixel + Audiences",
+                setup: "1 semana · $0–$25 USD/mes",
+                color: "var(--color-seagreen)",
+              },
+              {
+                n: "03",
+                nombre: "MEDIR",
+                resumen: "El equipo decide con datos en una pantalla.",
+                herramientas: "Google Analytics 4 · Looker Studio (3 pestañas)",
+                setup: "3 días · gratis",
+                color: "var(--color-deep-blue)",
+              },
+            ].map((capa, idx, arr) => (
+              <div
+                key={capa.n}
+                className={`grid grid-cols-1 lg:grid-cols-12 gap-x-4 gap-y-2 px-6 py-5 ${
+                  idx !== arr.length - 1 ? "border-b border-monte/8" : ""
+                } items-start`}
+              >
+                <div className="lg:col-span-3">
+                  <div className="flex items-baseline gap-2">
+                    <span
+                      className="font-mono text-xs tabular"
+                      style={{ color: capa.color }}
+                    >
+                      {capa.n}
                     </span>
+                    <span
+                      className="text-sm font-semibold uppercase tracking-[0.12em]"
+                      style={{ color: capa.color }}
+                    >
+                      {capa.nombre}
+                    </span>
+                  </div>
+                  <p className="mt-1.5 text-xs text-niebla leading-snug">
+                    {capa.resumen}
                   </p>
                 </div>
-              ))}
-            </div>
+                <div className="lg:col-span-6">
+                  <p className="text-sm text-monte leading-snug">
+                    {capa.herramientas}
+                  </p>
+                </div>
+                <div className="lg:col-span-3">
+                  <p className="font-mono text-xs text-carbon tabular">
+                    {capa.setup}
+                  </p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
 
@@ -243,7 +196,7 @@ export function Retencion() {
               aria-hidden
             />
             <span className="text-[11px] font-semibold uppercase tracking-[0.22em] text-seagreen">
-              Bloque B · La maquinaria que corre sola
+              B · MAQUINARIA
             </span>
           </div>
 
@@ -419,7 +372,7 @@ export function Retencion() {
               aria-hidden
             />
             <span className="text-[11px] font-semibold uppercase tracking-[0.22em] text-rojo-atratus">
-              Bloque C · Donde está la plata
+              C · REACTIVACIÓN
             </span>
           </div>
 
@@ -574,7 +527,7 @@ export function Retencion() {
               aria-hidden
             />
             <span className="text-[11px] font-semibold uppercase tracking-[0.22em] text-seagreen">
-              Bloque D · Subir el ticket sin subir la pauta
+              D · ESCALABILIDAD
             </span>
           </div>
 
@@ -586,64 +539,64 @@ export function Retencion() {
               letterSpacing: "-0.03em",
             }}
           >
-            Tres maneras de que cada cliente deje más plata.
+            Una sola palanca que cambia las cuentas.
             <br />
             <span className="text-monte/55">
-              Ninguna depende de traer gente nueva.
+              Y no depende de traer gente nueva.
             </span>
           </h3>
 
-          <div className="mt-12 grid grid-cols-1 lg:grid-cols-3 gap-5 lg:gap-6">
-            {accionesEscalabilidad.map((a) => (
-              <article
-                key={a.n}
-                className="relative flex flex-col rounded-2xl border border-monte/10 bg-white overflow-hidden transition-all duration-300 hover:-translate-y-[2px] hover:border-monte/20 hover:shadow-[0_14px_40px_-18px_rgba(14,14,14,0.16)]"
+          <article
+            className="mt-12 relative grid grid-cols-1 lg:grid-cols-12 gap-x-8 rounded-2xl border border-monte/10 bg-white overflow-hidden"
+          >
+            <div
+              className="absolute inset-x-0 top-0 h-[3px]"
+              style={{ background: accionEscalabilidad.color }}
+              aria-hidden
+            />
+            <div className="lg:col-span-7 p-7 md:p-9 lg:p-10">
+              <p
+                className="text-[10px] font-semibold uppercase tracking-[0.22em] mb-3"
+                style={{ color: accionEscalabilidad.color }}
               >
-                <div
-                  className="h-[3px] w-full"
-                  style={{ background: a.color }}
-                  aria-hidden
-                />
-                <div className="flex flex-col flex-1 p-6 md:p-7 gap-5">
-                  <header>
-                    <p
-                      className="text-[10px] font-semibold uppercase tracking-[0.22em] mb-2"
-                      style={{ color: a.color }}
-                    >
-                      Acción {a.n}
-                    </p>
-                    <h4
-                      className="display text-monte"
-                      style={{
-                        fontSize: "clamp(1.35rem, 1.8vw, 1.6rem)",
-                        lineHeight: 1.05,
-                        letterSpacing: "-0.02em",
-                      }}
-                    >
-                      {a.titulo}
-                    </h4>
-                  </header>
-
-                  <p className="text-sm text-carbon leading-relaxed">
-                    {a.descripcion}
-                  </p>
-
-                  <div className="mt-auto pt-5 border-t border-monte/8">
-                    <p
-                      className="font-mono text-lg font-semibold tabular"
-                      style={{ color: a.color }}
-                    >
-                      {a.delta}
-                    </p>
-                    <p className="text-xs text-niebla mt-1">{a.sub}</p>
-                    <p className="mt-3 text-xs text-carbon italic leading-snug">
-                      {a.note}
-                    </p>
-                  </div>
-                </div>
-              </article>
-            ))}
-          </div>
+                La palanca
+              </p>
+              <h4
+                className="display text-monte"
+                style={{
+                  fontSize: "clamp(1.75rem, 3.2vw, 2.5rem)",
+                  lineHeight: 1.05,
+                  letterSpacing: "-0.025em",
+                }}
+              >
+                {accionEscalabilidad.titulo}
+              </h4>
+              <p className="mt-5 text-base md:text-lg text-carbon leading-relaxed max-w-xl">
+                {accionEscalabilidad.descripcion}
+              </p>
+              <p className="mt-4 text-sm text-carbon italic leading-snug max-w-xl">
+                {accionEscalabilidad.note}
+              </p>
+            </div>
+            <div
+              className="lg:col-span-5 p-7 md:p-9 lg:p-10 flex flex-col justify-center"
+              style={{ background: "rgba(92, 138, 123, 0.06)" }}
+            >
+              <p
+                className="font-mono font-semibold tabular"
+                style={{
+                  color: accionEscalabilidad.color,
+                  fontSize: "clamp(1.75rem, 3vw, 2.25rem)",
+                  letterSpacing: "-0.02em",
+                }}
+              >
+                {accionEscalabilidad.delta}
+              </p>
+              <p className="text-sm text-carbon mt-2">
+                {accionEscalabilidad.sub}
+              </p>
+            </div>
+          </article>
         </div>
 
         {/* ============== MANIFESTO-CIERRE · BISAGRA A §5 ============== */}

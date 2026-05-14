@@ -2,8 +2,8 @@
 
 > Archivo de handoff entre sesiones. Cuando retomes, lee primero este archivo, luego `context_engineering.md`, `design_reference.md` y `README.md`.
 
-**Última sesión:** 2026-05-13.
-**Estado:** ✅ **Pitch completo y desplegado en producción.** 7 de 7 secciones SCQA construidas, repo en GitHub, Vercel publicando automáticamente cada push.
+**Última sesión:** 2026-05-14.
+**Estado:** ✅ **Pitch completo, recortado y desplegado en producción.** 7 de 7 secciones SCQA construidas, repo en GitHub, Vercel publicando automáticamente cada push. Pase de recorte del 2026-05-14 baja el pitch oral de ~10:30 a ~8:30 min sin perder ningún elemento del plan estratégico (auditado contra `Clase 12_ Diseño del plan estratégico digital.pptx`).
 
 ---
 
@@ -41,21 +41,21 @@
 
 ---
 
-## 🎙️ Arquitectura narrativa SCQA (10:30 min · 4 voces)
+## 🎙️ Arquitectura narrativa SCQA (8:30 min oral · 4 voces · ~9:00 con transiciones)
 
 | § | Sección | Marco SCQA | Rol | Tiempo | Componente |
 |---|---|---|---|---|---|
 | 0 | Hero · *The Money's in the List* | Tesis | CMO | 0:30 | `Hero.tsx` |
-| 1 | Diagnóstico · DOFA+CAME+SMART | Situation + Complication | CMO | 2:00 | `Diagnostico.tsx` |
+| 1 | Diagnóstico · DOFA+CAME+SMART | Situation + Complication | CMO | 1:30 | `Diagnostico.tsx` |
 | 2 | Audiencia · 3 buyer personas | Question | Contenidos | 1:30 | `Audiencia.tsx` |
-| 3 | Motor Adquisición · SEO+Pauta | Answer (atraer) | Growth | 2:00 | `Motor.tsx` |
-| 4 | Sistema Retención · stack+auto+reactivación+escalabilidad | Answer (retener) | RevOps | 2:30 | `Retencion.tsx` |
-| 5 | Cronograma + Pedido | Implementación | CMO | 1:30 | `Pedido.tsx` |
+| 3 | Motor Adquisición · SEO+Pauta | Answer (atraer) | Growth | 1:30 | `Motor.tsx` |
+| 4 | Sistema Retención · stack+auto+reactivación+1 palanca | Answer (retener) | RevOps | 2:00 | `Retencion.tsx` |
+| 5 | Cronograma + Pedido | Implementación | CMO | 1:00 | `Pedido.tsx` |
 | 6 | Cierre | Comercial-cierre | CMO | 0:30 | `Cierre.tsx` |
 
 **Buyer personas (§2):** María (Aviturista), Daniel (Senderista), Sara (Bióloga).
 **Motor (§3) ROAS por etapa:** TOFU 1.2× · MOFU 2.5× · BOFU 5.5× · F1 blended 3.74× · F2 blended 4.83×.
-**Retención (§4):** reactivación email año 1 = $150M COP · ROI 6.150%.
+**Retención (§4):** reactivación email año 1 = $150M COP · ROI 6.150%. Bloque D Escalabilidad recortado a **una sola palanca** (Cascada Upsell +78% AOV) — referidos y email D14 se mencionan como tácticas en el cronograma del Pedido, no como sección propia.
 **Pedido (§5):** inversión $31M · retorno $283M · ROI 9.13× · CTA WhatsApp wa.me/573147446649.
 
 **Frases ancla que NO cambian** (defendidas por el usuario):
@@ -113,4 +113,19 @@ git push origin main
 - `context_engineering.md` — biblia estratégica completa (13 secciones)
 - `design_reference.md` — biblia visual (paleta, tipografía, componentes)
 - `Atratus_Calculos_Auditados.xlsx` — todas las cifras con fórmulas
-- `Pitch_Atratus_Guion_Oral_Pulpito.docx` — guion oral palabra-por-palabra para los 4 roles
+- `Pitch_Atratus_Guion_Oral_Pulpito_v2.docx` — guion oral palabra-por-palabra para los 4 roles (versión 2026-05-14 con tiempos recortados)
+
+---
+
+## ✂️ Pase de recorte · 2026-05-14
+
+Auditado contra `12. Clase 09.05.2026/Clase 12_ Diseño del plan estratégico digital.pptx` — los 9 elementos del plan (slide 6) y los 6 pasos (slide 7) siguen cubiertos. Cambios aplicados:
+
+- **§1 Diagnóstico:** quitado bloque "Lo que el dato no muestra" (foto cliente alejándose) + headline largo de DOFA.
+- **§3 Motor:** quitado CTA pilar duplicado ("Esto no es propuesta. Ya está publicado") + strip "Lo que el motor deja atrás" (6 stats) + 1 cluster satélite (Storytelling).
+- **§4 Retención:** Stack 3 LayerCards → tabla compacta · strip 4 stats eliminado · Escalabilidad 3 acciones → 1 (Cascada Upsell). Bloque B Maquinaria intacto.
+- **§5 Pedido:** Gantt 6 → 4 iniciativas (CRM+cascada fusionado; Dashboard fusionado en SEO/medición) · Bloque C "4 voces" comprimido a tabla (NO eliminado — lo pide el .pptx slide 6 punto 9).
+- **Eyebrows largos** ("Bloque A · Las tres capas que sostienen el sistema") → cortos ("A · STACK").
+- **Guion oral v2:** tiempos actualizados, copy de bloques borrados eliminado, agregado Q&A "¿Y los OKR?" en sección Estratega, "once minutos" → "ocho minutos" en apertura.
+
+Total ahorrado: ~3:00 min de oral. Backup del docx anterior: `Pitch_Atratus_Guion_Oral_Pulpito_v2.bak.docx`.

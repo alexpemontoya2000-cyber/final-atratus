@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { RoleBadge } from "@/components/ui/RoleBadge";
-import { PillButton } from "@/components/ui/PillButton";
 
 /* ============================================================
    §3 MOTOR DE ADQUISICIÓN · Head of Growth · Plan-operativo + Pedagógico
@@ -41,14 +40,6 @@ const clusters: ClusterItem[] = [
     volume: "1.900 + 1.600/mes",
     funnel: "MOFU",
     role: "Cubre las variantes de la keyword pilar.",
-  },
-  {
-    label: "Storytelling",
-    title: "De biólogos a diseñadores",
-    keyword: "marcas outdoor Colombia",
-    volume: "Bajo volumen · alto backlink",
-    funnel: "TOFU",
-    role: "Trae enlaces orgánicos por historia real.",
   },
 ];
 
@@ -375,11 +366,11 @@ export function Motor() {
             </div>
           </article>
 
-          {/* 4 clusters satélite */}
+          {/* 3 clusters satélite */}
           <p className="mt-10 mb-5 text-[11px] font-semibold uppercase tracking-[0.22em] text-niebla">
-            Cuatro contenidos satélite que alimentan el pilar
+            Tres contenidos satélite que alimentan el pilar
           </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {clusters.map((c) => (
               <article
                 key={c.title}
@@ -468,51 +459,6 @@ export function Motor() {
             </div>
           </div>
 
-          {/* CTA live */}
-          <div className="mt-14">
-            <div className="rounded-2xl bg-monte text-white p-7 md:p-10 lg:p-12 relative overflow-hidden">
-              <div
-                className="absolute inset-x-0 top-0 h-[3px] bg-deep-blue"
-                aria-hidden
-              />
-              <div className="grid grid-cols-12 gap-x-8 gap-y-6 items-end">
-                <div className="col-span-12 lg:col-span-8">
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-deep-blue mb-4">
-                    El pilar ya está en línea
-                  </p>
-                  <h3
-                    className="display text-white"
-                    style={{
-                      fontSize: "clamp(1.75rem, 4vw, 3rem)",
-                      lineHeight: 1.05,
-                      letterSpacing: "-0.025em",
-                    }}
-                  >
-                    Esto no es propuesta. Ya está publicado.
-                  </h3>
-                  <p className="mt-5 max-w-xl text-base md:text-lg text-white/75 leading-relaxed">
-                    Desplegado en Vercel, optimizado on-page, listo para escalar
-                    a los clusters satélite. Mientras se discute, el SEO ya
-                    trabaja.
-                  </p>
-                </div>
-                <div className="col-span-12 lg:col-span-4 lg:text-right">
-                  <PillButton
-                    href="https://atratus.vercel.app/"
-                    variant="solid-dark"
-                    size="lg"
-                    ariaLabel="Ver el artículo SEO pilar en vivo"
-                  >
-                    Ver el artículo en vivo
-                    <span aria-hidden>↗</span>
-                  </PillButton>
-                  <p className="mt-3 text-[10px] font-mono uppercase tracking-[0.22em] text-white/45">
-                    atratus.vercel.app
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
 
         {/* ============== FRENTE 2 · PAUTA ============== */}
@@ -795,46 +741,6 @@ export function Motor() {
             </div>
           </div>
 
-          {/* Strip "Lo que el motor deja atrás" */}
-          <div className="mt-14">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-niebla mb-6">
-              Lo que el motor deja atrás cuando para
-            </p>
-            <div className="rounded-2xl border border-monte/10 bg-white p-6 md:p-8">
-              <p className="text-base md:text-lg text-monte leading-relaxed mb-6 max-w-3xl">
-                Al cerrar los 2 meses, queda un patrimonio de audiencias custom
-                que Atratus nunca había tenido. La Fase 2 (mes 3+) arranca con
-                el motor caliente y ROAS proyectado de{" "}
-                <span className="font-semibold text-deep-blue">4.83x</span>.
-              </p>
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-y-6 gap-x-4">
-                {[
-                  { num: "12K", label: "Visitantes web · 60 días" },
-                  { num: "80K", label: "Viewers 75%+ del TOFU" },
-                  { num: "1.500", label: "Leads email + WhatsApp" },
-                  { num: "800", label: "Carritos abandonados" },
-                  { num: "15K", label: "Engagement IG cualificado" },
-                  { num: "+220", label: "Clientes nuevos compradores" },
-                ].map((s) => (
-                  <div key={s.label}>
-                    <p
-                      className="display text-monte tabular"
-                      style={{
-                        fontSize: "clamp(1.5rem, 2.2vw, 2rem)",
-                        lineHeight: 1,
-                        letterSpacing: "-0.03em",
-                      }}
-                    >
-                      {s.num}
-                    </p>
-                    <p className="mt-2 text-xs text-niebla leading-snug">
-                      {s.label}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
         </div>
 
         {/* ============== MANIFESTO-CIERRE · bisagra a §4 ============== */}

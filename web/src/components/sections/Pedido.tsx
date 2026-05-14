@@ -28,22 +28,10 @@ const iniciativas: Iniciativa[] = [
     fase3: { estado: "escala", texto: "Fase 2 escalada · ROAS 4.83x" },
   },
   {
-    nombre: "CRM + flujos de email",
+    nombre: "CRM + email + cascada upsell",
     fase1: { estado: "setup", texto: "Configuración" },
-    fase2: { estado: "activo", texto: "Flujos en marcha" },
-    fase3: { estado: "escala", texto: "Expansión de secuencias" },
-  },
-  {
-    nombre: "Cascada upsell en checkout",
-    fase1: { estado: "setup", texto: "Configuración" },
-    fase2: { estado: "activo", texto: "Activo" },
-    fase3: { estado: "escala", texto: "Nuevos productos en cascada" },
-  },
-  {
-    nombre: "Programa de referidos",
-    fase1: { estado: "off" },
-    fase2: { estado: "activo", texto: "Lanzamiento" },
-    fase3: { estado: "escala", texto: "Escala a top referidores" },
+    fase2: { estado: "activo", texto: "Flujos + cascada en marcha" },
+    fase3: { estado: "escala", texto: "Expansión y referidos" },
   },
   {
     nombre: "SEO + Blog (Topic Cluster)",
@@ -52,7 +40,7 @@ const iniciativas: Iniciativa[] = [
     fase3: { estado: "escala", texto: "Dominio de la categoría" },
   },
   {
-    nombre: "Dashboard KPIs · Looker",
+    nombre: "Dashboard Looker · medición",
     fase1: { estado: "setup", texto: "Configuración" },
     fase2: { estado: "activo", texto: "Revisión mensual" },
     fase3: { estado: "activo", texto: "Revisión mensual" },
@@ -148,7 +136,7 @@ export function Pedido() {
               aria-hidden
             />
             <span className="text-[11px] font-semibold uppercase tracking-[0.22em] text-atratus-verde">
-              Bloque A · Cómo arranca cada cosa
+              A · CRONOGRAMA
             </span>
           </div>
 
@@ -235,7 +223,7 @@ export function Pedido() {
               aria-hidden
             />
             <span className="text-[11px] font-semibold uppercase tracking-[0.22em] text-atratus-verde">
-              Bloque B · Lo que cuesta · lo que devuelve
+              B · INVERSIÓN vs RETORNO
             </span>
           </div>
 
@@ -406,7 +394,7 @@ export function Pedido() {
               aria-hidden
             />
             <span className="text-[11px] font-semibold uppercase tracking-[0.22em] text-atratus-verde">
-              Bloque C · Las cuatro voces que ya están
+              C · EQUIPO
             </span>
           </div>
 
@@ -422,53 +410,54 @@ export function Pedido() {
             <span className="text-monte/55">Cero contrataciones nuevas.</span>
           </h3>
 
-          <p className="mt-5 text-base md:text-lg text-carbon leading-relaxed max-w-3xl">
-            Cada uno responde por su área. Cada uno habla el mismo plan. Y
-            todos miden contra el mismo dashboard.
-          </p>
+          <div className="mt-10 rounded-2xl border border-monte/10 bg-white overflow-hidden">
+            {/* Header tabla */}
+            <div className="hidden lg:grid grid-cols-12 gap-4 px-6 py-4 border-b border-monte/8 bg-hueso-light">
+              <div className="col-span-3 text-[10px] font-semibold uppercase tracking-[0.18em] text-niebla">
+                Rol
+              </div>
+              <div className="col-span-3 text-[10px] font-semibold uppercase tracking-[0.18em] text-niebla">
+                Persona
+              </div>
+              <div className="col-span-6 text-[10px] font-semibold uppercase tracking-[0.18em] text-niebla">
+                Qué es suyo
+              </div>
+            </div>
 
-          <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
-            {rolesData.map((r) => (
-              <article
+            {rolesData.map((r, idx, arr) => (
+              <div
                 key={r.id}
-                className="relative rounded-2xl border border-monte/10 bg-white overflow-hidden flex flex-col"
+                className={`grid grid-cols-1 lg:grid-cols-12 gap-x-4 gap-y-2 px-6 py-4 ${
+                  idx !== arr.length - 1 ? "border-b border-monte/8" : ""
+                } items-center`}
               >
-                <div
-                  className="h-[3px] w-full"
-                  style={{ background: r.color }}
-                  aria-hidden
-                />
-                <div className="flex flex-col flex-1 p-6 md:p-7 gap-4">
+                <div className="lg:col-span-3 flex items-center gap-2.5">
+                  <span
+                    className="h-1.5 w-1.5 rounded-full shrink-0"
+                    style={{ background: r.color }}
+                    aria-hidden
+                  />
                   <div>
                     <p
-                      className="text-[10px] font-semibold uppercase tracking-[0.22em] mb-2"
+                      className="text-[10px] font-semibold uppercase tracking-[0.22em] leading-tight"
                       style={{ color: r.color }}
                     >
                       {r.rolNumber}
                     </p>
-                    <h4
-                      className="display text-monte"
-                      style={{
-                        fontSize: "clamp(1.15rem, 1.4vw, 1.35rem)",
-                        lineHeight: 1.05,
-                        letterSpacing: "-0.02em",
-                      }}
-                    >
+                    <p className="text-sm font-semibold text-monte leading-snug">
                       {r.title}
-                    </h4>
-                    <p className="mt-1.5 text-xs text-niebla">{r.subtitle}</p>
-                  </div>
-
-                  <div className="mt-auto pt-4 border-t border-monte/8">
-                    <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-niebla mb-2">
-                      Qué es suyo
-                    </p>
-                    <p className="text-sm text-carbon leading-snug">
-                      {r.queEsSuyo}
                     </p>
                   </div>
                 </div>
-              </article>
+                <div className="lg:col-span-3">
+                  <p className="text-sm text-monte">{r.subtitle}</p>
+                </div>
+                <div className="lg:col-span-6">
+                  <p className="text-sm text-carbon leading-snug">
+                    {r.queEsSuyo}
+                  </p>
+                </div>
+              </div>
             ))}
           </div>
         </div>
@@ -481,7 +470,7 @@ export function Pedido() {
               aria-hidden
             />
             <span className="text-[11px] font-semibold uppercase tracking-[0.22em] text-atratus-verde">
-              Bloque D · El pedido
+              D · EL PEDIDO
             </span>
           </div>
 
