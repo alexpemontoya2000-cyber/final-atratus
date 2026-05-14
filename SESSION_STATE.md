@@ -34,6 +34,7 @@
 
 - **Path local:** `/Users/alexperezmontoya/Desktop/1. Negocios Electrónicos/13. Trabajo Final Atratus/`
 - **Repo:** https://github.com/alexpemontoya2000-cyber/final-atratus
+- **Producción:** https://final-atratus.vercel.app/
 - **Vercel:** auto-deploy en cada `git push origin main` · Root Directory = `web/` · Framework = Next.js
 - **Stack:** Next.js 16 (Turbopack default) · React 19 · Tailwind 4 (CSS-first con `@theme`) · TypeScript estricto · pnpm
 - **Git config local:** user.name = "Alex Pérez Montoya" · user.email = "alexpemontoya2000@gmail.com"

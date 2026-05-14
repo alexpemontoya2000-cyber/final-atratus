@@ -60,6 +60,7 @@ pnpm dev
 
 ## Despliegue
 
+- **URL producción:** https://final-atratus.vercel.app/
 - **Producción:** despliegue automático en Vercel en cada `git push origin main`
 - **Root directory en Vercel:** `web/` (no la raíz del repo)
 - **Framework preset:** Next.js (auto-detectado)
