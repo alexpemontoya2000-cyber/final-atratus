@@ -1,157 +1,115 @@
 # Session State — Trabajo Final Atratus
 
-> Archivo de handoff entre sesiones. Cuando retomes, lee primero este archivo, luego `context_engineering.md` y `design_reference.md`.
+> Archivo de handoff entre sesiones. Cuando retomes, lee primero este archivo, luego `context_engineering.md`, `design_reference.md` y `README.md`.
 
-**Última sesión:** 2026-05-13 (tarde-noche — pausa antes de codear §4 Retención).
-**Estado:** 4 de 7 secciones SCQA codeadas y vivas en localhost:3000. §4 tiene el copy listo (ver `_pending_copy_retencion.md`) — solo falta construir el componente.
-**Siguiente paso al retomar:** construir `web/src/components/sections/Retencion.tsx` con el copy ya aprobado del archivo `_pending_copy_retencion.md`. NO regenerar copy, está aprobado.
+**Última sesión:** 2026-05-13.
+**Estado:** ✅ **Pitch completo y desplegado en producción.** 7 de 7 secciones SCQA construidas, repo en GitHub, Vercel publicando automáticamente cada push.
 
 ---
 
-## 🎯 NORTE ACTUAL (post-refactor SCQA · 2026-05-13)
+## 🎯 Estado de cierre · 2026-05-13
 
-Pasamos de 13 secciones (pedagógicas) a **7 secciones (narrativas SCQA)**.
+| Bloque | Estado |
+|---|---|
+| Documentación maestra (context + design + this) | ✅ 100% |
+| Imágenes curadas (29 assets + 4 generadas con IA) | ✅ 100% |
+| Excel auditado `Atratus_Calculos_Auditados.xlsx` (12-13 hojas, fórmulas verificables) | ✅ 100% |
+| Word `Pitch_Atratus_Guion_Oral_Pulpito.docx` (4 roles · pulpito + Q&A + frases prohibidas) | ✅ 100% |
+| Scaffold web + design system (Next.js 16 + Tailwind 4 + voz-viva) | ✅ 100% |
+| §0 Hero (CMO) — `Hero.tsx` | ✅ |
+| §1 Diagnóstico DOFA+CAME+SMART (CMO) — `Diagnostico.tsx` | ✅ |
+| §2 Audiencia · 3 buyer personas (Contenidos) — `Audiencia.tsx` | ✅ |
+| §3 Motor Adquisición · SEO+Pauta (Growth) — `Motor.tsx` | ✅ |
+| §4 Sistema Retención · 4 bloques (RevOps) — `Retencion.tsx` | ✅ |
+| §5 Cronograma + Pedido (CMO) — `Pedido.tsx` | ✅ |
+| §6 Cierre (CMO) — `Cierre.tsx` | ✅ |
+| Repo GitHub `final-atratus` (public, main) | ✅ |
+| Auto-deploy Vercel (Root Directory = `web`) | ✅ |
 
-**Razones del refactor:**
-- 13 secciones repetían datos (78K, 70%, $6M COP en 2-3 secciones cada uno).
-- 13 cierres "manifesto" acumulados → pierde fuerza.
-- 4 roles desbalanceados — CMO con 5, los otros con 1.
-- Faltaba estructura SCQA (Situation-Complication-Question-Answer).
-- Pedía la Clase 12: DOFA+CAME · Objetivos SMART · Audiencia · Canales · Métricas · Presupuesto · Roles · Cronograma. Lo cubrimos todo, pero condensado.
+**Pitch deck completo · pre-presentación al consejo Atratus.**
 
-### Mapeo nuevo SCQA + Clase 12 + 4 roles
+---
 
-| # | Sección | Marco SCQA | Rol | Tiempo | Cubre de Clase 12 |
+## 🔗 Coordenadas del proyecto
+
+- **Path local:** `/Users/alexperezmontoya/Desktop/1. Negocios Electrónicos/13. Trabajo Final Atratus/`
+- **Repo:** https://github.com/alexpemontoya2000-cyber/final-atratus
+- **Vercel:** auto-deploy en cada `git push origin main` · Root Directory = `web/` · Framework = Next.js
+- **Stack:** Next.js 16 (Turbopack default) · React 19 · Tailwind 4 (CSS-first con `@theme`) · TypeScript estricto · pnpm
+- **Git config local:** user.name = "Alex Pérez Montoya" · user.email = "alexpemontoya2000@gmail.com"
+
+---
+
+## 🎙️ Arquitectura narrativa SCQA (10:30 min · 4 voces)
+
+| § | Sección | Marco SCQA | Rol | Tiempo | Componente |
 |---|---|---|---|---|---|
-| **0** | **Apertura** | Tesis | **CMO** | 0:30 | Quiénes somos / qué proponemos |
-| **1** | **Diagnóstico** (DOFA + CAME + Objetivos SMART) | Situation + Complication | **CMO** | 2:00 | DOFA · CAME · Objetivos SMART |
-| **2** | **Audiencia + Propuesta de Valor** | Question | **Contenidos** | 1:30 | Segmentación · Propuesta · Buyer personas |
-| **3** | **Motor de Adquisición** (SEO + Pauta consolidados) | Answer parte 1: atraer | **Growth** | 2:00 | Canales · Estrategias · Presupuesto pauta |
-| **4** | **Sistema de Retención** (stack + auto + reactivación + escalabilidad) | Answer parte 2: retener y monetizar | **RevOps** | 2:30 | Métricas · KPIs · Roles operativos |
-| **5** | **Cronograma + Pedido** | Implementación | **CMO** | 1:30 | Cronograma 12 meses · Presupuesto total · Roles · El sí |
-| **6** | **Cierre** | Comercial-cierre | **CMO** | 0:30 | Frase final + foto fundadores |
+| 0 | Hero · *The Money's in the List* | Tesis | CMO | 0:30 | `Hero.tsx` |
+| 1 | Diagnóstico · DOFA+CAME+SMART | Situation + Complication | CMO | 2:00 | `Diagnostico.tsx` |
+| 2 | Audiencia · 3 buyer personas | Question | Contenidos | 1:30 | `Audiencia.tsx` |
+| 3 | Motor Adquisición · SEO+Pauta | Answer (atraer) | Growth | 2:00 | `Motor.tsx` |
+| 4 | Sistema Retención · stack+auto+reactivación+escalabilidad | Answer (retener) | RevOps | 2:30 | `Retencion.tsx` |
+| 5 | Cronograma + Pedido | Implementación | CMO | 1:30 | `Pedido.tsx` |
+| 6 | Cierre | Comercial-cierre | CMO | 0:30 | `Cierre.tsx` |
 
-**Total: 10:30 min · holgura 30 seg.** Tiempo por rol: CMO 4:30 · Contenidos 1:30 · Growth 2:00 · RevOps 2:30.
+**Buyer personas (§2):** María (Aviturista), Daniel (Senderista), Sara (Bióloga).
+**Motor (§3) ROAS por etapa:** TOFU 1.2× · MOFU 2.5× · BOFU 5.5× · F1 blended 3.74× · F2 blended 4.83×.
+**Retención (§4):** reactivación email año 1 = $150M COP · ROI 6.150%.
+**Pedido (§5):** inversión $31M · retorno $283M · ROI 9.13× · CTA WhatsApp wa.me/573147446649.
 
-### Reglas duras del refactor
-- **Cada dato aparece UNA vez en todo el pitch.** Si "78K" sale en §2, no sale en §0.
-- **Cada rol tiene UNA sección suya** (excepto CMO que orquesta).
-- **Sin manifestos cierre repetidos** — solo §1 cierra fuerte; los demás transicionan limpio.
-- **Voz-viva ACTIVADA antes de cada copy.** Sin skill → no se reescribe.
-
-### Plan de migración (orden estricto)
-
-1. ✅ **Hero** reescrito con voz-viva (CMO · manifiesto+comercial-cierre).
-2. ✅ **§1 Diagnóstico** construido (fusionó Problema + Oportunidad, DOFA+CAME + 5 SMART). Archivo: `Diagnostico.tsx`.
-3. ✅ **§2 Audiencia** refactorizada con voz-viva (cronista). Bug numérico § 3 → § 2 corregido.
-4. ✅ **§3 Motor de Adquisición** construido (fusionó SEO + Pauta como dos frentes). Archivo: `Motor.tsx`.
-5. ✅ **§4 Retención** construido. `Retencion.tsx` con 4 bloques (Stack · Maquinaria Cuaderno de Campo · Reactivación $150M · 3 acciones Escalabilidad) + bisagra. Voz-viva aplicada. Cifras auditadas con AOV $200K.
-6. ⏳ **§5 Cronograma + Pedido** (CMO · 1:30) — Gantt 12 meses + presupuesto consolidado + 4 roles + el sí concreto.
-7. ⏳ **§6 Cierre** (CMO · 0:30) — frase final + foto Toña y Mate + CTA WhatsApp aprobación.
+**Frases ancla que NO cambian** (defendidas por el usuario):
+- Hero: `THE MONEY'S IN THE LIST` (con traducción italic abajo: "— el dinero está en la lista.")
+- Diagnóstico: `Atratus camina bien. Pero camina en círculos.`
+- Cierre: `La marca ya está. La gente ya está. El sistema apenas se enciende.`
 
 ---
 
-## ✅ Qué está LISTO (pre-refactor · se conserva o se migra)
+## 🧠 Reglas duras del proyecto (no negociables)
 
-### Documentación maestra (3 archivos en raíz del proyecto)
-- `context_engineering.md` — biblia estratégica (13 secciones)
-- `design_reference.md` — biblia visual (10 secciones, paleta de pantalla, componentes)
-- `SESSION_STATE.md` — este archivo
-
-### Imágenes (29 assets en `/imagenes/`)
-- `productos/` — 11 productos curados (los que aparecen en la narrativa)
-- `marca/` — 14 lifestyle/hero/activity + logo Atratus (descargadas de CDN)
-- `marca/` — **4 imágenes hiperrealistas generadas con IA** (Flux/Midjourney):
-  - `hero-fundadores.png` — Toña y Mate en cloud forest dorado (Hero §0 + Cierre §12) ⭐
-  - `paramo-cordillera.png` — Vista panorámica de los Andes con frailejones (§2 La Oportunidad)
-  - `cliente-se-aleja.png` — Caminante perdiéndose en niebla (§1 El Problema, opcional)
-  - `gallito-de-roca.png` — Ave Rupicola peruvianus en bosque (§6 MOFU Big Day)
-
-### Web pitch deck — scaffold + Hero §0 (en `/web/`)
-- **Stack:** Next.js 16 + Tailwind 4 (CSS-first config) + TypeScript + pnpm
-- **Fonts:** Archivo Black (display) + Plus Jakarta Sans (body) + JetBrains Mono (data)
-- **Carpeta:** `/web/` dentro del proyecto, dev server probado en `localhost:3000`
-- **0 errores, 0 warnings** en última verificación
-
-### Componentes ya construidos
-| Archivo | Propósito |
-|---|---|
-| `web/src/lib/cn.ts` | Helper para concat de classNames |
-| `web/src/lib/roles.ts` | 4 roles (estratega/contenidos/growth/revops) con colors y metadata |
-| `web/src/components/ui/PillButton.tsx` | Botón pill con 4 variantes |
-| `web/src/components/ui/RoleBadge.tsx` | Badge del rol presentador con dot animado |
-| `web/src/components/Header.tsx` | Header sticky con logo + nav + stamp |
-| `web/src/components/sections/Hero.tsx` | **Sección §0 completa** |
-| `web/src/app/layout.tsx` | Root layout con fonts y metadata |
-| `web/src/app/globals.css` | Design tokens Tailwind 4 + animaciones |
-| `web/src/app/page.tsx` | Mount Hero + placeholder §1 |
-| `web/next.config.ts` | Config con `images.qualities: [75, 85, 92]` |
-
-### Decisiones críticas tomadas
-1. **No dark mode** — Atratus es marca tierra/hueso. Fondo hueso (`#EFEBE3`), nunca blanco puro.
-2. **No usar `hero-aventura-desktop.png`** — tenía texto "ROPA PARA LA AVENTURA" baked-in que chocaba con "DEL MONTE A LA COSTUMBRE". Usé `actividad-climas-frios.png` (mujer con polar Atratus, sin texto).
-3. **Tailwind 4 CSS-first** — no hay `tailwind.config.ts`. Todo en `@theme` dentro de `globals.css`.
-4. **Permisos liberales locked** — `.claude/settings.local.json` allowlistea Bash, Read, Edit, Write, WebFetch, MCPs. Bypass total requiere `Shift+Tab` UI manual.
+1. **Voz-viva activada antes de cualquier copy.** Cero patrones IA. Modo según rol:
+   - CMO: manifiesto + comercial-cierre
+   - Contenidos: cronista
+   - Growth: plan-operativo + pedagógico
+   - RevOps: plan-operativo + institucional
+2. **Toda cifra con fórmula verificable.** ROAS objetivo = 1 / (% margen invertible). Cifras vigentes en `Atratus_Calculos_Auditados.xlsx` hoja "Validación calculadora".
+3. **Responsive 2xl obligatorio** para llenar 1920px: `px-6 md:px-12 lg:px-20 2xl:px-32` + `mx-auto max-w-[1480px] 2xl:max-w-[1720px]`.
+4. **Caps de tipografía display moderados:**
+   - Hero headline: `clamp(2.5rem, 7vw, 8rem)` con `lineHeight: 0.92`
+   - Section headlines: `clamp(2.5rem, 6.5vw, 6rem)`
+5. **No dark mode** — Atratus es marca tierra/hueso. Fondo hueso `#EFEBE3`, nunca blanco puro.
+6. **Tailwind 4 CSS-first** — todos los tokens en `@theme` dentro de `globals.css`. No hay `tailwind.config.ts`.
+7. **Cada dato aparece UNA vez** en el pitch. Sin repetir 78K, 70%, AOV, etc. en varias secciones.
+8. **El nested git en /web/ está eliminado** — el repo único vive en la raíz del proyecto. Si `create-next-app` se vuelve a correr, recordar `rm -rf web/.git`.
 
 ---
 
-## ⏳ Qué está PENDIENTE (en orden de prioridad)
+## 🚀 Cómo retomar el proyecto
 
-### 1. Sección §1 — El Problema ✅ COMPLETADA
-Construida con typography-led approach (sin foto — la ausencia subraya el mensaje). Contiene: role badge Estratega + eyebrow "§ 1 · Diagnóstico" + "El número que duele" + `70%` gigante con `%` en rojo Atratus + "no vuelve." + relato lateral + 4 StatCards (Churn / Frecuencia / Ticket / LTV) + manifesto-quote: "Atratus tiene producto. Tiene comunidad. Lo que no tiene es sistema." Componente reutilizable `StatCard` creado.
+```bash
+cd "/Users/alexperezmontoya/Desktop/1. Negocios Electrónicos/13. Trabajo Final Atratus/web"
+pnpm install   # solo si node_modules no está
+pnpm dev       # → http://localhost:3000
+```
 
-### 2. Sección §2 — La Oportunidad ✅ COMPLETADA
-Construida con: cabecera + headline "El mercado ya quiere comprar lo que Atratus vende" + hero panorámico `paramo-cordillera.png` con overlay "Colombia es el país #1 del mundo en aves" + 4 OpportunityCards (12K búsquedas · 1.950 especies · 78K seguidores · 50-60% margen) con accent colors por palanca + pull-quote bisagra hacia siguiente sección. Componente reutilizable `OpportunityCard` creado.
+**Para publicar un cambio:**
+```bash
+cd "/Users/alexperezmontoya/Desktop/1. Negocios Electrónicos/13. Trabajo Final Atratus"
+git add .
+git commit -m "..."
+git push origin main
+# Vercel publica solo en 2-3 min
+```
 
-### Mejora a §1 — Beat visual con `cliente-se-aleja.png` añadida
-Sumada sección visual entre stats y manifesto: foto portrait + copy reflexivo "Cada cliente que no volvió tuvo un nombre, una mochila y una intención." Profundiza la sección sin saturarla.
+**Para pulir copy:** invocar primero la skill `voz-viva` con el modo correspondiente al rol. NO improvisar tono.
 
-### 3-12. Resto de secciones
-Plan completo en `context_engineering.md` §6 con tiempo, presentador y patrón visual mapeado de Atratus.
-
-### Pendientes técnicos generales
-- [ ] Inicializar git en `/web/` y hacer primer commit
-- [ ] Crear repo GitHub y conectar (cuando Alex lo decida)
-- [ ] Deployar a Vercel (cuando esté la presentación completa)
-- [ ] Decidir si el T5 viejo (`atratus.vercel.app` actual) va como ruta `/seo-pillar` o link externo
-- [ ] Foto del equipo (los 4 presentadores) para footer — pendiente que Alex la consiga
-- [ ] Activar skill `voz-viva` al escribir copy de cada sección (cronista para Contenidos, plan operativo para RevOps, etc.)
-
----
-
-## 🚀 Cómo retomar la sesión
-
-1. **Lee este archivo** (`SESSION_STATE.md`).
-2. **Lee `context_engineering.md`** §6 para ver la tabla completa de secciones.
-3. **Lee `design_reference.md`** §7 para ver el patrón visual de cada sección.
-4. **Levanta dev server:**
-   ```bash
-   cd "/Users/alexperezmontoya/Desktop/1. Negocios Electrónicos/13. Trabajo Final Atratus/web"
-   pnpm dev
-   ```
-5. **Abrir:** `http://localhost:3000` — debe verse el Hero §0 + placeholder §1.
-6. **Siguiente paso:** construir `web/src/components/sections/Problema.tsx` y reemplazar el placeholder en `page.tsx`.
+**Para tocar cifras:** abrir `Atratus_Calculos_Auditados.xlsx`, ajustar la fórmula en la hoja correspondiente, propagar a la web. Nunca cambiar una cifra en `.tsx` sin actualizar el Excel.
 
 ---
 
-## 📊 Métricas del progreso
+## 📂 Documentos hermanos en la raíz
 
-| Bloque | Status |
-|---|---|
-| Diagnóstico + Investigación | ✅ 100% |
-| Documentación maestra | ✅ 100% |
-| Imágenes curadas | ✅ 100% |
-| Scaffold web + design system | ✅ 100% |
-| Sección (nueva arquitectura SCQA) | Estado |
-|---|---|
-| §0 Hero (CMO) — `Hero.tsx` | ✅ 100% — voz-viva aplicada |
-| §1 Diagnóstico (CMO · fusiona Problema+Oportunidad+SMART) — `Diagnostico.tsx` | ✅ 100% |
-| §2 Audiencia (Contenidos) — `Audiencia.tsx` | ✅ 100% — voz-viva refactor |
-| §3 Motor Adquisición (Growth · fusiona SEO+Pauta) — `Motor.tsx` | ✅ 100% |
-| §4 Sistema de Retención (RevOps) — `Retencion.tsx` | ✅ 100% |
-| §5 Cronograma + Pedido (CMO) — `Pedido.tsx` | ✅ 100% |
-| §6 Cierre (CMO) — `Cierre.tsx` | ✅ 100% — pitch deck completa |
-| Deploy Vercel | ⏳ 0% |
-| Deploy Vercel | ⏳ 0% |
-
-**Progreso global:** 1 de 13 secciones (Hero) + toda la infraestructura. Aproximadamente **35% del proyecto** completado (la infraestructura es la mitad del trabajo).
+- `README.md` — overview público del repo
+- `context_engineering.md` — biblia estratégica completa (13 secciones)
+- `design_reference.md` — biblia visual (paleta, tipografía, componentes)
+- `Atratus_Calculos_Auditados.xlsx` — todas las cifras con fórmulas
+- `Pitch_Atratus_Guion_Oral_Pulpito.docx` — guion oral palabra-por-palabra para los 4 roles
