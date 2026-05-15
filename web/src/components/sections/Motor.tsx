@@ -133,7 +133,7 @@ export function Motor() {
 
       <div className="mx-auto max-w-[1480px] 2xl:max-w-[1720px]">
         {/* ============== CABECERA ============== */}
-        <header className="flex flex-col gap-7 max-w-4xl">
+        <header className="flex flex-col gap-7">
           <div className="flex flex-wrap items-center gap-4">
             <RoleBadge role="growth" variant="light" />
             <span className="text-[11px] font-semibold uppercase tracking-[0.24em] text-niebla">
@@ -141,19 +141,55 @@ export function Motor() {
             </span>
           </div>
 
-          <h2
-            className="display text-monte"
-            style={{
-              fontSize: "clamp(2.5rem, 6.5vw, 6rem)",
-              lineHeight: 0.98,
-              letterSpacing: "-0.03em",
-            }}
-          >
-            Dos frentes abiertos.
-            <br />
-            <span className="text-monte/55">Uno trabaja gratis.</span>{" "}
-            <span className="text-deep-blue">El otro acelera.</span>
-          </h2>
+          {/* Imagen cinemática · pantalla dividida — sin palabras encima */}
+          <figure className="relative w-full aspect-[2.36/1] overflow-hidden rounded-2xl bg-monte/5">
+            <Image
+              src="/atratus/marca/motor-dos-frentes.png"
+              alt="Bosque andino al amanecer en quietud (izquierda) y cascada de páramo en pleno movimiento (derecha) — los dos frentes del motor de adquisición de Atratus"
+              fill
+              quality={92}
+              priority
+              sizes="(max-width: 1024px) 100vw, 90vw"
+              className="object-cover"
+            />
+            {/* Línea divisoria sutil al centro */}
+            <div
+              className="absolute inset-y-0 left-1/2 w-px bg-white/20 mix-blend-overlay"
+              aria-hidden
+            />
+          </figure>
+
+          {/* Caption — dos columnas, una por cada frente */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-y-4 gap-x-10 max-w-4xl">
+            <div className="flex items-baseline gap-3">
+              <span
+                className="h-1.5 w-1.5 rounded-full bg-monte/60 shrink-0 translate-y-1"
+                aria-hidden
+              />
+              <div>
+                <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-niebla mb-1">
+                  El que trabaja gratis
+                </p>
+                <p className="text-sm md:text-base text-monte font-medium leading-snug">
+                  SEO orgánico · 24/7 · sin costo por click
+                </p>
+              </div>
+            </div>
+            <div className="flex items-baseline gap-3">
+              <span
+                className="h-1.5 w-1.5 rounded-full bg-deep-blue shrink-0 translate-y-1"
+                aria-hidden
+              />
+              <div>
+                <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-deep-blue mb-1">
+                  El que acelera
+                </p>
+                <p className="text-sm md:text-base text-monte font-medium leading-snug">
+                  Pauta digital · Google + Meta · 3 campañas
+                </p>
+              </div>
+            </div>
+          </div>
 
           <p className="text-base md:text-lg lg:text-xl text-carbon leading-relaxed max-w-3xl">
             El SEO atrae a los que ya están buscando, sin pagar un peso. La
@@ -743,33 +779,6 @@ export function Motor() {
 
         </div>
 
-        {/* ============== MANIFESTO-CIERRE · bisagra a §4 ============== */}
-        <div className="mt-20 md:mt-28 max-w-4xl">
-          <div className="grid grid-cols-12 gap-x-8 items-start">
-            <div className="col-span-12 lg:col-span-2 hidden lg:block">
-              <span className="text-[11px] font-semibold uppercase tracking-[0.22em] text-deep-blue">
-                La bisagra
-              </span>
-            </div>
-            <blockquote className="col-span-12 lg:col-span-10">
-              <p
-                className="display text-monte"
-                style={{
-                  fontSize: "clamp(1.5rem, 3.5vw, 2.75rem)",
-                  lineHeight: 1.1,
-                  letterSpacing: "-0.025em",
-                  textWrap: "balance",
-                }}
-              >
-                El motor trae gente. Pero la gente que viene se va igual de
-                rápido si no hay sistema atrás.{" "}
-                <span className="text-deep-blue">
-                  Lo que sigue es ese sistema.
-                </span>
-              </p>
-            </blockquote>
-          </div>
-        </div>
       </div>
     </section>
   );

@@ -120,31 +120,122 @@ export function Diagnostico() {
 
       <div className="mx-auto max-w-[1480px] 2xl:max-w-[1720px]">
         {/* ============== CABECERA ============== */}
-        <header className="flex flex-col gap-7 max-w-4xl">
-          <div className="flex flex-wrap items-center gap-4">
-            <RoleBadge role="estratega" variant="light" />
-            <span className="text-[11px] font-semibold uppercase tracking-[0.24em] text-niebla">
-              § 1 · Diagnóstico
-            </span>
+        <header className="grid grid-cols-12 gap-x-8 gap-y-10 items-center">
+          <div className="col-span-12 lg:col-span-7 flex flex-col gap-7">
+            <div className="flex flex-wrap items-center gap-4">
+              <RoleBadge role="estratega" variant="light" />
+              <span className="text-[11px] font-semibold uppercase tracking-[0.24em] text-niebla">
+                § 1 · Diagnóstico
+              </span>
+            </div>
+
+            <h2
+              className="display text-monte"
+              style={{
+                fontSize: "clamp(2.5rem, 6.5vw, 6rem)",
+                lineHeight: 0.98,
+                letterSpacing: "-0.03em",
+              }}
+            >
+              Atratus camina bien.
+              <br />
+              <span className="text-rojo-atratus">Pero camina en círculos.</span>
+            </h2>
+
+            <p className="text-base md:text-lg lg:text-xl text-carbon leading-relaxed max-w-2xl">
+              Esto es lo que dicen los números.
+            </p>
           </div>
 
-          <h2
-            className="display text-monte"
-            style={{
-              fontSize: "clamp(2.5rem, 6.5vw, 6rem)",
-              lineHeight: 0.98,
-              letterSpacing: "-0.03em",
-            }}
-          >
-            Atratus camina bien.
-            <br />
-            <span className="text-rojo-atratus">Pero camina en círculos.</span>
-          </h2>
+          {/* SVG animado — caminando en círculos */}
+          <div className="col-span-12 lg:col-span-5 flex items-center justify-center">
+            <div className="relative w-full max-w-[420px] aspect-square">
+              <svg
+                viewBox="0 0 400 400"
+                className="w-full h-full"
+                aria-label="Sendero circular: representación del problema — el negocio camina pero vuelve al mismo punto"
+                role="img"
+              >
+                {/* Sendero base — círculo punteado tenue */}
+                <circle
+                  cx="200"
+                  cy="200"
+                  r="150"
+                  fill="none"
+                  stroke="var(--color-monte)"
+                  strokeOpacity="0.14"
+                  strokeWidth="1.5"
+                  strokeDasharray="3 7"
+                />
 
-          <p className="text-base md:text-lg lg:text-xl text-carbon leading-relaxed max-w-3xl">
-            Antes de proponer nada, hay que mirar lo que ya pasa. Esto es lo que
-            dicen los números — y lo que confirma el sector.
-          </p>
+                {/* 16 pisadas como ticks radiales */}
+                {Array.from({ length: 16 }).map((_, i) => (
+                  <line
+                    key={i}
+                    x1="200"
+                    y1="42"
+                    x2="200"
+                    y2="58"
+                    stroke="var(--color-monte)"
+                    strokeOpacity="0.22"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    transform={`rotate(${i * 22.5} 200 200)`}
+                  />
+                ))}
+
+                {/* Caminante — punto rojo + halo, rota 360 en loop */}
+                <g className="animate-walk-loop">
+                  <circle
+                    cx="200"
+                    cy="50"
+                    r="14"
+                    fill="var(--color-rojo-atratus)"
+                    opacity="0.18"
+                  />
+                  <circle
+                    cx="200"
+                    cy="50"
+                    r="6"
+                    fill="var(--color-rojo-atratus)"
+                  />
+                </g>
+
+                {/* Texto central — refuerzo conceptual */}
+                <text
+                  x="200"
+                  y="188"
+                  textAnchor="middle"
+                  fill="var(--color-monte)"
+                  opacity="0.55"
+                  style={{
+                    fontFamily: "var(--font-mono, monospace)",
+                    fontSize: "11px",
+                    letterSpacing: "0.22em",
+                    textTransform: "uppercase",
+                    fontWeight: 600,
+                  }}
+                >
+                  Misma vuelta
+                </text>
+                <text
+                  x="200"
+                  y="215"
+                  textAnchor="middle"
+                  fill="var(--color-rojo-atratus)"
+                  style={{
+                    fontFamily: "var(--font-mono, monospace)",
+                    fontSize: "11px",
+                    letterSpacing: "0.22em",
+                    textTransform: "uppercase",
+                    fontWeight: 600,
+                  }}
+                >
+                  año tras año
+                </text>
+              </svg>
+            </div>
+          </div>
         </header>
 
         {/* ============== BLOQUE A · EL 70% ============== */}
@@ -412,32 +503,6 @@ export function Diagnostico() {
           </div>
         </div>
 
-        {/* ============== MANIFESTO-CIERRE ============== */}
-        <div className="mt-20 md:mt-28 max-w-4xl">
-          <div className="grid grid-cols-12 gap-x-8 items-start">
-            <div className="col-span-12 lg:col-span-2 hidden lg:block">
-              <span className="text-[11px] font-semibold uppercase tracking-[0.22em] text-atratus-verde">
-                La bisagra
-              </span>
-            </div>
-            <blockquote className="col-span-12 lg:col-span-10">
-              <p
-                className="display text-monte"
-                style={{
-                  fontSize: "clamp(1.5rem, 3.5vw, 2.75rem)",
-                  lineHeight: 1.1,
-                  letterSpacing: "-0.025em",
-                  textWrap: "balance",
-                }}
-              >
-                Cinco números medibles.{" "}
-                <span className="text-atratus-verde">
-                  Lo que sigue es para quién.
-                </span>
-              </p>
-            </blockquote>
-          </div>
-        </div>
       </div>
     </section>
   );

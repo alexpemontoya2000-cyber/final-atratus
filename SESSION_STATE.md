@@ -117,7 +117,42 @@ git push origin main
 
 ---
 
-## ✂️ Pase de recorte · 2026-05-14
+## 🎨 Pase de pulido visual · 2026-05-14 (sesión tarde-noche)
+
+Alex pasó **10 capturas con inconformidades** para refinar la página. Hechas 7 de 10. Quedan pendientes 3 que cuando retomemos él va a pasar (capturas #8, #9, #10 — la #5 fue otra bisagra ya cubierta en este mismo pase).
+
+**Cambios aplicados en esta sesión:**
+
+1. **§1 Diagnóstico — header rediseñado.** Copy puntual: "Antes de proponer nada..." → **"Esto es lo que dicen los números."** Header convertido en grid 2-col. A la derecha: SVG animado `caminando en círculos` — sendero punteado, 16 pisadas radiales, caminante rojo con halo que rota 360° en loop infinito (14s). Centro: `MISMA VUELTA / AÑO TRAS AÑO` en mono. Keyframe `walkLoop` añadido a `globals.css`.
+
+2. **Bisagras eliminadas de §1, §3, §4 y §5.** Los bloques "La bisagra · ..." al final de cada sección desaparecen de la pantalla. **Las frases siguen vivas en el guion oral como transiciones entre voces** (Estratega → Contenidos, etc.) — no se rompe el handoff.
+
+3. **§2 Audiencia — headline + deseo de fondo reescritos** con voz cronista (Hugo). Headline: **"Sus clientes cargan binoculares en la mochila. Tienen botas debajo de la cama. *Y madrugan todos los sábados.*"** (última frase en verde). Párrafo descriptivo eliminado. Deseo de fondo expandido con regla de tres + cierre punzante: **"sin bochorno — el bochorno es lo peor que les puede pasar caminando seis horas."**
+
+4. **§3 Motor — headline tipográfico reemplazado por imagen cinemática.** Generada por Alex con DALL-E. Pantalla dividida 50/50: bosque andino al amanecer (SEO trabaja gratis) + cascada del páramo (pauta acelera). Guardada en `web/public/atratus/marca/motor-dos-frentes.png`. Aspect 2.36:1 con línea divisoria sutil al centro. Debajo: 2 labels mínimas (`EL QUE TRABAJA GRATIS / EL QUE ACELERA`).
+
+5. **§4 Retención — header rediseñado.** Headline largo "La plata no está afuera. Está dormida..." → solo **"El dinero / está en la lista."** ("está en la lista." en seagreen). Todo el párrafo "El stack ya existe..." eliminado. Grid 2-col: a la derecha SVG sobre/carta flotante seagreen con respiración (sube 14px, baja en loop 4.5s) + sombra realista debajo que se contrae al subir y se expande al bajar (filter `feGaussianBlur`). Punto rojo en el centro del sobre simula sello sin abrir. Keyframes `floatLetter` y `floatShadow` añadidos.
+
+6. **§4 Retención Bloque B Maquinaria — bloque de correos rediseñado.** Párrafo del cuaderno comprimido. Los 3 correos pasan de filas con texto largo a **3 botones expandibles** (`<details>` HTML nativo, sin JS extra, funciona en server component). Estado cerrado: solo `T+0 · Bienvenida · +`. Símbolo `+` rota 45° a `×` al abrir. Detalle (asunto del correo + objetivo) se despliega al click. Eyebrow: `LO IDEAL: TRES CORREOS EN LA PRIMERA SEMANA`.
+
+7. **§4 Retención Bloque D Escalabilidad — pop-up demo checkout.** Card grande "Cascada en el checkout · Justo antes de pagar..." eliminada. Reemplazada por un solo botón **"Pop up"** (negro monte, redondo, punto verde pulsando) con explicación debajo de 5 palabras exactas: *"Cascada en checkout, ejemplo real."* Al click abre un modal interactivo (`<dialog>` HTML nativo + `useState`):
+   - Chaqueta ya en carrito ($210.000)
+   - Sugerencia 1: Cuellito ($29.900, antes $39.900) → click "Agregar" → se agrega
+   - Sugerencia 2 (aparece solo si cuellito agregado): Camibuso ($169.000, antes $199.000) → "Agregar"
+   - **Total dinámico** sube en vivo + cálculo del % de incremento del ticket
+   - Cierre con Esc, click en backdrop cierra, accesible (aria-haspopup, aria-labelledby)
+   - Componente nuevo: `web/src/components/ui/CheckoutDemoModal.tsx`
+
+**Pendientes para retomar:**
+- Captura #8 (Alex la va a pasar)
+- Captura #9 (Alex la va a pasar)
+- Captura #10 (Alex la va a pasar)
+- Validación visual en `pnpm dev` o en producción tras push
+- Posible ajuste de §5 Pedido / §6 Cierre si caen en las 3 capturas pendientes
+
+---
+
+## ✂️ Pase de recorte · 2026-05-14 (sesión mañana)
 
 Auditado contra `12. Clase 09.05.2026/Clase 12_ Diseño del plan estratégico digital.pptx` — los 9 elementos del plan (slide 6) y los 6 pasos (slide 7) siguen cubiertos. Cambios aplicados:
 

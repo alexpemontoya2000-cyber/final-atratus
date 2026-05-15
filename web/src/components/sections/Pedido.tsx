@@ -530,30 +530,6 @@ export function Pedido() {
           </div>
         </div>
 
-        {/* ============== MANIFESTO-CIERRE · BISAGRA A §6 ============== */}
-        <div className="mt-24 md:mt-32 max-w-4xl">
-          <div className="grid grid-cols-12 gap-x-8 items-start">
-            <div className="col-span-12 lg:col-span-2 hidden lg:block">
-              <span className="text-[11px] font-semibold uppercase tracking-[0.22em] text-atratus-verde">
-                Y eso es todo
-              </span>
-            </div>
-            <blockquote className="col-span-12 lg:col-span-10">
-              <p
-                className="display text-monte"
-                style={{
-                  fontSize: "clamp(1.5rem, 3.5vw, 2.75rem)",
-                  lineHeight: 1.1,
-                  letterSpacing: "-0.025em",
-                  textWrap: "balance",
-                }}
-              >
-                Lo que sigue ya no es plan.{" "}
-                <span className="text-atratus-verde">Es decisión.</span>
-              </p>
-            </blockquote>
-          </div>
-        </div>
       </div>
     </section>
   );

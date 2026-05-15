@@ -25,44 +25,41 @@ export function Audiencia() {
           <h2
             className="display text-monte"
             style={{
-              fontSize: "clamp(2.5rem, 6.5vw, 6rem)",
-              lineHeight: 0.98,
+              fontSize: "clamp(2rem, 5.2vw, 4.75rem)",
+              lineHeight: 1,
               letterSpacing: "-0.03em",
             }}
           >
-            La gente que los sigue
-            <br />
-            <span className="text-atratus-verde">madruga los sábados.</span>
+            Sus clientes cargan binoculares en la mochila. Tienen botas debajo
+            de la cama.{" "}
+            <span className="text-atratus-verde">
+              Y madrugan todos los sábados.
+            </span>
           </h2>
-
-          <p className="text-base md:text-lg lg:text-xl text-carbon leading-relaxed max-w-3xl">
-            Cargan binoculares en la mochila. Tienen botas debajo de la cama.
-            Esta comunidad no la trajo la pauta — la trajeron Toña y Mate
-            contando salidas reales. Y dentro de la lista viven{" "}
-            <span className="font-semibold text-monte">
-              tres personas muy distintas
-            </span>{" "}
-            — que terminan pidiendo lo mismo.
-          </p>
         </header>
 
         {/* Frase de fondo — el deseo compartido */}
         <div className="mt-12 md:mt-16 max-w-3xl">
           <div className="rounded-2xl border border-monte/12 bg-hueso-light p-6 md:p-8">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-niebla mb-3">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-niebla mb-4">
               El deseo de fondo (común a los tres)
             </p>
             <p
               className="display text-monte"
               style={{
-                fontSize: "clamp(1.4rem, 2.8vw, 2rem)",
-                lineHeight: 1.1,
-                letterSpacing: "-0.02em",
+                fontSize: "clamp(1.2rem, 2.2vw, 1.65rem)",
+                lineHeight: 1.25,
+                letterSpacing: "-0.015em",
                 textWrap: "balance",
               }}
             >
-              Ser el caminante serio que ya{" "}
-              <span className="text-atratus-verde">no improvisa.</span>
+              Buscan una sola prenda que aguante el clima cambiante de Colombia.
+              Cómoda en la subida, resistente en la trocha, que respire cuando
+              el sol pega a las once y abrigue cuando vuelve la niebla.{" "}
+              <span className="text-atratus-verde">
+                Y sobre todo sin bochorno — el bochorno es lo peor que les puede
+                pasar caminando seis horas.
+              </span>
             </p>
           </div>
         </div>
