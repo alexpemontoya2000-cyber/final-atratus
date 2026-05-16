@@ -2,8 +2,8 @@
 
 > Archivo de handoff entre sesiones. Cuando retomes, lee primero este archivo, luego `context_engineering.md`, `design_reference.md` y `README.md`.
 
-**Última sesión:** 2026-05-15.
-**Estado:** ✅ Pitch completo en producción. Iniciado **pase de dinámicas pop-up + auditoría de §5**. Trabajo de hoy: nuevo Bloque D Competidores en §1 con `CompetidoresModal` (réplica del CheckoutDemoModal). **Pendiente de revisión visual del usuario antes de push a GitHub/Vercel.**
+**Última sesión:** 2026-05-15 (sesión 2 · noche).
+**Estado:** ✅ Pitch en producción con **5 dinámicos interactivos vivos** (§1 switch · §2 slider · §3 tabs + header overlay + switch · §4 switch + email viewer · §4 modal pasarela con imágenes reales) + header nav arreglado con dots de color de rol. Último commit en main: `6c49af4`. Vercel auto-deploy disparado.
 
 ---
 
@@ -279,3 +279,98 @@ feat(diagnostico): add competitor pop-up modal in §1 block D
 ```
 
 Si Alex pide ajustes, anotar y aplicar antes del commit. Próximo bloque del backlog tras este: **calculadora del churn en §1 Bloque A**.
+
+---
+
+## 🧩 Pase de dinámicos interactivos + header nav · 2026-05-15 (sesión 2 · noche)
+
+Sesión de transformar bloques estáticos en dinámicos sin perder requisitos de la clase 12. Commits: `41e3753` (5 dinámicos) + `6c49af4` (header fix).
+
+### 1) Componente reutilizable · `BeforeAfterToggle.tsx`
+
+Switch binario Sin/Con con dos botones pill, transición de opacidad 300ms y grid apilado (dos paneles en el mismo cell). Usado en:
+
+- **§1 Diagnóstico · bloque del 70%**
+  - Sin sistema: 70% no vuelve · Freq 1.1× · AOV $200K · LTV $220K (Hoja 02 línea base)
+  - Con sistema: 55% / 1.4× / $310K / **$385K** LTV (Metas SMART del Plan estratégico, consistente con §4)
+  - Importante: el LTV es $385K (no $434K que es matemáticamente AOV × freq) — cuadra con lo que dice §4 Retención
+- **§3 Motor · strip ROAS** (dentro del tab Publicidad)
+  - Sin (Pauta artesanal): $6M · ? · ? · 0 pool. **Cero cifras inventadas** — el lado Sin habla del costo de no medir (sin pixel, sin UTM)
+  - Con (Motor integrado): $6M · $22.4M · 3.74× · 92K pool (Hojas 05/06/09/10 del Excel)
+- **§4 Retención · big number** (bloque C Reactivación)
+  - Sin (Lista dormida): $0 · N/A · N/A · LTV $220K (estado actual real)
+  - Con (Lista activada): $150M · 6.150% ROI · 250× ROAS · LTV $385K (Hoja 07 del Excel)
+
+### 2) Componente nuevo · `DeseoDelDiaSlider.tsx` — §2 Audiencia
+
+Reemplaza el párrafo estático "Buscan una sola prenda…" por un slider de 4 paradas del día con voz cronista:
+- 5:00 AM — Abriga sin peso (niebla densa antes del amanecer) · accent deep-blue
+- 11:00 AM — Respira hacia afuera (sol del trópico pegando) · accent beige natural
+- 2:00 PM — La lluvia rueda (aguacero corto de los Andes) · accent seagreen
+- 6:00 PM — Cierra y abriga (niebla del descenso, viento frío) · accent verde Atratus
+
+Track horizontal con punto activo agrandado + halo. Panel inferior con título display + detalle + cierre fijo del "sin bochorno" en verde Atratus (frase defendida por el usuario).
+
+### 3) Componente nuevo · `MotorTabs.tsx` — §3 Motor
+
+Dos botones grandes lado a lado: **SEO** (Frente 1 · El que trabaja gratis) y **Publicidad** (Frente 2 · El que acelera). Solo se renderiza el panel del activo (transición 300ms). Reduce visualmente §3 a la mitad y respeta el ritmo SCQA — Growth abre la pestaña que está presentando. Default: SEO.
+
+Contenido preservado intacto en los paneles (keyword pilar 4.400, competidores, artículo pilar, 3 clusters satélite, mar abierto en SEO; switch sin/con + 3 campañas BOFU/MOFU/TOFU con sesgos en Publicidad).
+
+### 4) Header de §3 Motor — imagen con texto overlay
+
+La imagen `motor-dos-frentes.png` (bosque amaneciendo + cascada) era un bloque estético sin contenido. Ahora **es el lienzo del concepto**: el texto del SEO va sobre el bosque (esquina inf izq, "SEO orgánico. · 24/7 sin costo por click") y el de la Pauta sobre la cascada (esquina inf der, "Pauta digital. · Google + Meta · 3 campañas"). Gradients `from-monte/85 via-monte/45 to-transparent` en los bordes para legibilidad sin tapar la imagen al centro. Línea divisoria sutil mantenida.
+
+### 5) Componente nuevo · `MaquinariaPreview.tsx` — §4 Bloque B Maquinaria
+
+Reemplaza la card estática del Cuaderno de Campo + 3 `<details>` + bloque de lead scoring (60 puntos · UMBRAL, **eliminado**) por un visor dinámico:
+- Panel izquierdo (col-span-5, aspect 3/4): por default muestra el **Cuaderno de Campo**; al clicar un botón cambia al **correo real** con header tipo cliente de email (avatar circular con iniciales + remitente + dirección + hora + asunto destacado) y cuerpo redactado voz Alex.
+- Lado derecho (col-span-7): párrafo intro + 3 botones controlados (no details) — toggle on/off al clic.
+- Los 3 correos redactados:
+  - T+0 Bienvenida (Toña Velásquez · "Aquí está tu Cuaderno de Campo" · con adjunto PDF simulado)
+  - T+3 Educación (Mateo Restrepo · "El error que casi nos cuesta una semana en el Cocuy" · con la regla de las tres capas numerada)
+  - T+6 Conversión (Toña y Mate · "Las lluvias arrancan en 12 días" · con oferta 15% off + CTA "Ver la chaqueta →")
+
+### 6) `CheckoutDemoModal.tsx` — pasarela real
+
+Modal del Bloque D Escalabilidad refactorizado a look Shopify + Wompi:
+- Header tipo navegador: 3 dots macOS + barra URL con candado verde y `atratus.co/checkout`
+- Productos con **imágenes reales** 80×80 px:
+  - Chaqueta: `chaqueta-espeletia-negro.png`
+  - Cuellito: `chaqueta-espeletia-seagreen.png` (placeholder — no hay imagen específica de cuellito en `/web/public/atratus/productos/`. Si Alex la añade ahí como `cuellito-tecnico.png`, cambiar la línea correspondiente)
+  - Camibuso: `camibuso-pantera-hombre.png`
+- Cada producto con badge circular de cantidad (aparece al agregar) + pill de descuento en color del producto
+- Footer pasarela: Subtotal + Envío (Gratis en seagreen) + línea + Total grande + mensaje dinámico "Ticket subió +X%" + **botón `🔒 Pagar $X · Wompi`** full-width + footer "Pago seguro · PSE · Nequi · Daviplata · Tarjeta"
+
+### 7) Header global · nav arreglado
+
+Los anchors estaban rotos (`#problema`, `#oportunidad`, `#pauta`, `#reactivacion` no existen). La nav no movía la pantalla.
+
+Reemplazo: 5 items con `href` al ID real de cada sección + **dot de color del rol** que la presenta:
+
+| Sección | href | Dot · rol |
+|---|---|---|
+| Diagnóstico | `#diagnostico` | verde Atratus · ROL 01 Estratega |
+| Audiencia | `#audiencia` | beige natural · ROL 02 Contenidos |
+| Motor | `#adquisicion` | deep blue · ROL 03 Growth |
+| Retención | `#retencion` | seagreen · ROL 04 RevOps |
+| Pedido | `#pedido` | verde Atratus · ROL 01 Estratega |
+
+`scroll-smooth` añadido al `<html>` en `layout.tsx`. El dot escala 1.5× al hover. `title`/`aria-label` exponen el rol completo (ej: "ROL 03 · Head of Growth").
+
+### Reglas que se reafirmaron en esta sesión
+
+- **Cifras del lado Sin = estado real auditado** (Hoja 02 Línea base actual). Nunca inventar.
+- **Cifras del lado Con = metas SMART del Plan estratégico** (no del Excel; el Excel audita cálculos de flujos como ingresos/ROI, no metas individuales como churn 55% o AOV $310K). Etiquetadas como "Meta SMART · Plan Estratégico" en los hints para que el consejo entienda que son objetivos.
+- **Cero cifras inventadas en §3 Sin**: cuando no hay dato real (pauta artesanal sin pixel), el lado Sin muestra "?" en lugar de número fabricado.
+- **Cierre limpio**: §6 no lleva switch porque el manifiesto pierde fuerza si compite con un toggle.
+
+### Componentes nuevos creados (5)
+
+- `web/src/components/ui/BeforeAfterToggle.tsx`
+- `web/src/components/ui/DeseoDelDiaSlider.tsx`
+- `web/src/components/ui/MotorTabs.tsx`
+- `web/src/components/ui/MaquinariaPreview.tsx`
+- `web/src/components/ui/CompetidoresModal.tsx` (era untracked de la sesión 1; entró en este push)
+
+Todos client components con `"use client"`, useState, transiciones 300ms para coherencia.
