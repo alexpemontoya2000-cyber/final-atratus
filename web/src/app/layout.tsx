@@ -41,7 +41,7 @@ export default function RootLayout({
   return (
     <html
       lang="es-CO"
-      className={`${archivoBlack.variable} ${plusJakarta.variable} ${jetbrains.variable}`}
+      className={`${archivoBlack.variable} ${plusJakarta.variable} ${jetbrains.variable} scroll-smooth`}
     >
       <body>{children}</body>
     </html>

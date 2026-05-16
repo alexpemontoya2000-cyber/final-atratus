@@ -1,5 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
+import { roles } from "@/lib/roles";
+
+const navItems = [
+  { href: "#diagnostico", label: "Diagnóstico", role: roles.estratega },
+  { href: "#audiencia", label: "Audiencia", role: roles.contenidos },
+  { href: "#adquisicion", label: "Motor", role: roles.growth },
+  { href: "#retencion", label: "Retención", role: roles.revops },
+  { href: "#pedido", label: "Pedido", role: roles.estratega },
+];
 
 export function Header() {
   return (
@@ -32,16 +41,27 @@ export function Header() {
             />
           </Link>
 
-          {/* Nav central — anclas a las secciones del pitch */}
+          {/* Nav central — secciones del pitch con dot del rol */}
           <nav
-            className="hidden lg:flex items-center gap-7 text-[13px] font-medium text-monte/70"
+            className="hidden lg:flex items-center gap-6 text-[13px] font-medium text-monte/70"
             aria-label="Secciones del pitch"
           >
-            <a href="#problema" className="hover:text-monte transition-colors">Diagnóstico</a>
-            <a href="#oportunidad" className="hover:text-monte transition-colors">Oportunidad</a>
-            <a href="#pauta" className="hover:text-monte transition-colors">Pauta</a>
-            <a href="#reactivacion" className="hover:text-monte transition-colors">Reactivación</a>
-            <a href="#pedido" className="hover:text-monte transition-colors">El Pedido</a>
+            {navItems.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                className="group inline-flex items-center gap-2 hover:text-monte transition-colors"
+                aria-label={`${item.label} — ${item.role.title}`}
+                title={`${item.role.rolNumber} · ${item.role.title}`}
+              >
+                <span
+                  className="h-1.5 w-1.5 rounded-full transition-transform duration-300 group-hover:scale-150"
+                  style={{ background: item.role.color }}
+                  aria-hidden
+                />
+                <span>{item.label}</span>
+              </a>
+            ))}
           </nav>
 
           {/* Stamp — meta de la presentación */}
