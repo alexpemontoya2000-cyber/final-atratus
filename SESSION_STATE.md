@@ -2,8 +2,8 @@
 
 > Archivo de handoff entre sesiones. Cuando retomes, lee primero este archivo, luego `context_engineering.md`, `design_reference.md` y `README.md`.
 
-**Última sesión:** 2026-05-14.
-**Estado:** ✅ **Pitch completo, recortado y desplegado en producción.** 7 de 7 secciones SCQA construidas, repo en GitHub, Vercel publicando automáticamente cada push. Pase de recorte del 2026-05-14 baja el pitch oral de ~10:30 a ~8:30 min sin perder ningún elemento del plan estratégico (auditado contra `Clase 12_ Diseño del plan estratégico digital.pptx`).
+**Última sesión:** 2026-05-15.
+**Estado:** ✅ Pitch completo en producción. Iniciado **pase de dinámicas pop-up + auditoría de §5**. Trabajo de hoy: nuevo Bloque D Competidores en §1 con `CompetidoresModal` (réplica del CheckoutDemoModal). **Pendiente de revisión visual del usuario antes de push a GitHub/Vercel.**
 
 ---
 
@@ -164,3 +164,118 @@ Auditado contra `12. Clase 09.05.2026/Clase 12_ Diseño del plan estratégico di
 - **Guion oral v2:** tiempos actualizados, copy de bloques borrados eliminado, agregado Q&A "¿Y los OKR?" en sección Estratega, "once minutos" → "ocho minutos" en apertura.
 
 Total ahorrado: ~3:00 min de oral. Backup del docx anterior: `Pitch_Atratus_Guion_Oral_Pulpito_v2.bak.docx`.
+
+---
+
+## 🧩 Pase de dinámicas pop-up · 2026-05-15
+
+Sesión de auditoría completa de la presentación + arranque del **nuevo bloque D Competidores** en §1.
+
+### Contexto del pase
+
+Alex pidió optimizar §5 sin perder elementos críticos. Cruce con la Clase 12 confirmó que **el único requisito faltante en toda la web era "Análisis de competidores"** (slide 6 punto 3). El resto de elementos del plan estratégico ya estaban repartidos en §1 (DOFA+CAME+SMART), §2 (audiencia), §3 (estrategias+canales), §4 (retención), §5 (presupuesto+cronograma+equipo).
+
+Alex enfatizó el patrón del **`CheckoutDemoModal`** como la dinámica visual a replicar: "algo tan simple, explicado con dinámica, se vuelve fácil al instante". Este es ahora el **patrón de referencia** del proyecto — pop-up con botón ping + `<dialog>` nativo + footer dinámico que cambia con la interacción.
+
+### Datos verificados de competidores (mayo 2026)
+
+| Marca | IG | E-com | Email auto | Comunidad | Origen |
+|---|---|---|---|---|---|
+| Cotopaxi | 553K · `@cotopaxi` | ✓ propio | ✓ activo | global | USA · B Corp · $150M/año |
+| The North Face | global | ✓ propio CO | ✓ activo | global | USA · presente en CO |
+| Rutas Andes (`randes.co`) | menor | ✓ propio | parcial | parcial | Colombia · senderismo |
+| **Atratus** | **81K · 777 posts · `@atratus__`** | ✓ Shopify | parcial (solo formulario) | ✓ | Antioquia · Envigado |
+
+**Sobre Atratus específicamente** (verificado en `atratuscolombia.com`):
+- Tienda online: **sí, sobre Shopify**
+- Newsletter: **sí tiene formulario** ("Únete a nuestra comunidad" en footer), sin automatización confirmada
+- Pop-up bienvenida: **no tiene**
+- Blog en sitio: **no tiene**
+- Único canal social linkeado desde el sitio: IG `@atratus__`
+
+### Componente creado
+
+**`web/src/components/ui/CompetidoresModal.tsx`** — gemelo del `CheckoutDemoModal`:
+
+- Botón disparador negro con ping animado **verde** (gemelo del rojo del checkout)
+- `<dialog>` nativo, cierre con Esc + click en backdrop, accesible (`aria-haspopup`, `aria-labelledby`)
+- Toggle **"Solo marca" / "Marca + Sistema digital"** que revela 4 columnas de checks con `animate-fade-in-up` staggered
+- 4 dimensiones del sistema digital: **Tienda online · Comunidad orgánica · Email automatizado · Contenido en sitio**
+- Atratus highlighted con `border-atratus-verde/40` + eyebrow "Acá estás vos"
+- Estados: ✓ verde (atratus-verde), parcial rojo (rojo-atratus), no (círculo outline niebla)
+- Footer dinámico cambia según modo
+- Sin tecnicismos, voz Alex
+
+### Bloque D insertado en §1 Diagnóstico
+
+Después del bloque C (5 SMART), antes del cierre de la sección:
+
+```
+Eyebrow: LA CANCHA DE AFUERA
+Headline: "Atratus no está sola en el monte.
+          Pero nadie pelea outdoor antioqueño con sistema digital prendido."
+Intro:    "Tres marcas y Atratus, lado a lado. Mirá primero solo la marca.
+          Después prendé el sistema digital — ahí se ve la ventana."
+[Botón ping verde] Pop up · La cancha completa ↗
+```
+
+### Insight estratégico del modal (footer en modo "sistema")
+
+**Headline footer:** *"Atratus ya tiene los dos activos más difíciles de construir: marca con identidad propia y 81K personas que la siguen."*
+**Sub-footer:** *"Lo que falta — email automatizado y contenido propio en el sitio — se construye en meses, no en años. Es el engranaje del medio que conecta la audiencia con la tienda."*
+
+Reformulado tras feedback de Alex: la primera versión decía *"Atratus tiene la mitad del sistema prendido. Le falta..."* — Alex (con razón) señaló que decir *"no tiene contenido propio"* es injusto cuando hay 81K y 777 posts. Se separó **contenido en redes** (que sí tiene) de **contenido en sitio web** (blog/lead magnet, lo que sí le falta).
+
+### Auditoría completa de dinámicas pop-up (backlog priorizado)
+
+Detrás del CheckoutDemoModal ya en producción + el CompetidoresModal de hoy, el resto del pitch tiene **5 oportunidades** identificadas. Orden de prioridad (impacto / costo):
+
+1. **§1 Bloque A · Calculadora del churn** — slider 0%→100% de churn que muestra en vivo cuánto dinero se va por la puerta. Convierte la estadística "70%" en pérdida visualizada.
+2. **§5 optimización completa** — Gantt animado on-scroll + count-up en cifras grandes ($31M → $283M → 9.13×) + Bloque B recalculadora + compactar densidad (4 sub-bloques apilados → estructura más respirada).
+3. **§4 Cascada de emails 365 días** — línea de tiempo D1 → D7 → D14 → D30 → D90. Click en día → mockup mini del email que llega.
+4. **§3 Simulador de pauta** — sliders para inversión total + % de mix BOFU/MOFU/TOFU. Calcula ROAS blended + retorno esperado en vivo. Blinda contra preguntas financieras del consejo.
+5. **§5 Pop-up confirmación pre-WhatsApp** — al click en "Aprobar y arrancar", primer modal con "esto pasa al aprobar hoy: 1) campaña mañana 2) leads semana 2 3) cierre Excel mes 1" + botón final que abre WhatsApp.
+
+**Optativos del banco (si los pide):**
+- §1 Bloque B Flip cards DOFA/CAME
+- §2 "Un día con Atratus" por persona
+- §6 Cierre con contador on-scroll (12 meses · ROI 9.13× · $283M)
+
+### Reglas para esta línea de trabajo (no negociables)
+
+1. **Cero datos sin verificar**. Alex pifió mi primer borrador donde puse Atratus "sin e-commerce" y "10K seguidores" — la realidad es Shopify activo y **81K seguidores con 777 posts**. Toda cifra de competidor o de Atratus se verifica antes de codear.
+2. **Localhost primero, push después**. Alex revisa visualmente en `pnpm dev` antes de cualquier `git push`. NO subir a Vercel sin su OK.
+3. **Voz-viva en todos los copy del modal**. Headlines, footers y eyebrows pasan por el modo correspondiente al rol que presenta el bloque.
+4. **El patrón CheckoutDemoModal es el estándar**. Botón con ping animado + `<dialog>` nativo + footer dinámico que cambia con la interacción. No inventar componentes nuevos cuando este patrón sirva.
+
+### Estado al cerrar sesión 2026-05-15
+
+- ✅ `CompetidoresModal.tsx` creado y enchufado en `Diagnostico.tsx`
+- ✅ Verificado visualmente en `http://localhost:3000/#diagnostico` (3 screenshots tomados con Playwright)
+- ✅ Toggle funciona, footer dinámico cambia, Atratus highlighted
+- ⏸️ **NO se hizo `git push`** — Alex pidió guardar todo para retomar y revisar después
+- ⏸️ Dev server cerrado limpiamente al cerrar sesión
+
+### Cómo retomar este pase
+
+```bash
+cd "/Users/alexperezmontoya/Desktop/1. Negocios Electrónicos/13. Trabajo Final Atratus/web"
+pnpm dev
+# → abrir http://localhost:3000/#diagnostico
+# → scroll hasta el final del Diagnóstico, después de la tabla SMART
+# → click en "Pop up · La cancha completa"
+# → probar toggle Solo marca / Marca + Sistema digital
+```
+
+Si Alex aprueba el bloque tal como está, hacer commit con mensaje sugerido:
+```
+feat(diagnostico): add competitor pop-up modal in §1 block D
+
+- New CompetidoresModal component (CheckoutDemoModal pattern twin)
+- Toggle "Solo marca" / "Marca + Sistema digital"
+- 4 brands (Cotopaxi, TNF, Rutas Andes, Atratus) × 4 digital system dimensions
+- Closes Clase 12 requirement: competitor analysis
+- Verified data: Atratus 81K IG, Shopify store, 777 posts
+```
+
+Si Alex pide ajustes, anotar y aplicar antes del commit. Próximo bloque del backlog tras este: **calculadora del churn en §1 Bloque A**.

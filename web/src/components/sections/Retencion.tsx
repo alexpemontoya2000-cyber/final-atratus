@@ -1,5 +1,7 @@
 import { RoleBadge } from "@/components/ui/RoleBadge";
 import { CheckoutDemoModal } from "@/components/ui/CheckoutDemoModal";
+import { BeforeAfterToggle } from "@/components/ui/BeforeAfterToggle";
+import { MaquinariaPreview } from "@/components/ui/MaquinariaPreview";
 
 /* ============================================================
    §4 SISTEMA DE RETENCIÓN · Director de RevOps
@@ -267,160 +269,9 @@ export function Retencion() {
             <span className="text-monte/55">Cero personas pendientes.</span>
           </h3>
 
-          {/* Cuaderno de Campo */}
-          <div className="mt-12 grid grid-cols-12 gap-x-8 gap-y-10 items-start">
-            <div className="col-span-12 lg:col-span-5">
-              <article className="relative aspect-[3/4] rounded-2xl bg-monte text-white overflow-hidden flex flex-col justify-between p-7 md:p-9 border border-seagreen/30">
-                <div
-                  className="absolute inset-x-0 top-0 h-[3px] bg-seagreen"
-                  aria-hidden
-                />
-                <div>
-                  <p className="text-[10px] font-mono uppercase tracking-[0.22em] text-seagreen mb-3">
-                    Lead Magnet
-                  </p>
-                  <h4
-                    className="display text-white"
-                    style={{
-                      fontSize: "clamp(1.75rem, 3.5vw, 2.75rem)",
-                      lineHeight: 1.02,
-                      letterSpacing: "-0.025em",
-                    }}
-                  >
-                    Cuaderno de Campo
-                    <br />
-                    <span className="text-seagreen">Atratus.</span>
-                  </h4>
-                </div>
-
-                <ul className="space-y-2.5 my-7">
-                  {[
-                    "La regla de las tres capas",
-                    "Calendario de temporadas Colombia",
-                    "Checklist de mochila de un día",
-                    "5 reglas del aviturista que no espanta aves",
-                    "Glosario corto del monte",
-                  ].map((it) => (
-                    <li
-                      key={it}
-                      className="flex items-start gap-2.5 text-sm text-white/85"
-                    >
-                      <span
-                        className="mt-2 h-1 w-1 rounded-full bg-seagreen shrink-0"
-                        aria-hidden
-                      />
-                      {it}
-                    </li>
-                  ))}
-                </ul>
-
-                <div className="pt-5 border-t border-white/12">
-                  <p
-                    className="font-mono text-3xl text-white tabular"
-                    style={{ letterSpacing: "-0.02em" }}
-                  >
-                    18
-                  </p>
-                  <p className="text-[10px] uppercase tracking-[0.22em] text-white/55 font-semibold mt-1">
-                    páginas · firmado por Toña y Mate
-                  </p>
-                </div>
-              </article>
-            </div>
-
-            <div className="col-span-12 lg:col-span-7 lg:pt-4">
-              <p className="text-base md:text-lg text-carbon leading-relaxed">
-                Manual de 18 páginas firmado por Toña y Mate.{" "}
-                <span className="font-semibold text-seagreen">
-                  La gente no descarga un cupón. Descarga un libro.
-                </span>
-              </p>
-
-              {/* Los 3 emails — botones expandibles (details nativos, sin JS) */}
-              <div className="mt-10">
-                <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-niebla mb-3">
-                  Lo ideal: tres correos en la primera semana
-                </p>
-                <p className="text-sm text-carbon mb-5 leading-relaxed max-w-2xl">
-                  Cada uno con un trabajo claro. Toca cualquier botón para ver
-                  qué pasa adentro.
-                </p>
-
-                <div className="space-y-3">
-                  {[
-                    {
-                      t: "T+0",
-                      titulo: "Bienvenida",
-                      asunto: "Aquí está tu Cuaderno de Campo",
-                      objetivo:
-                        "Entrega el cuaderno. Presenta a Toña y Mate. Sin venta.",
-                    },
-                    {
-                      t: "T+3",
-                      titulo: "Educación",
-                      asunto:
-                        "El error que casi nos cuesta una semana en el Cocuy",
-                      objetivo:
-                        "Historia real + regla de las tres capas. La marca demuestra que sabe.",
-                    },
-                    {
-                      t: "T+6",
-                      titulo: "Conversión",
-                      asunto:
-                        "Las lluvias arrancan en 12 días (algo te queríamos ofrecer antes)",
-                      objetivo:
-                        "Oferta concreta: 15% off chaqueta + envío gratis, válido 72 horas.",
-                    },
-                  ].map((e) => (
-                    <details
-                      key={e.t}
-                      className="group rounded-xl border border-monte/10 bg-white overflow-hidden transition-colors hover:border-seagreen/35 [&::-webkit-details-marker]:hidden"
-                    >
-                      <summary className="cursor-pointer list-none px-5 py-4 flex items-center gap-4 select-none">
-                        <span className="font-mono text-sm font-semibold text-seagreen tabular shrink-0 w-12">
-                          {e.t}
-                        </span>
-                        <span className="flex-1 text-sm md:text-base font-semibold text-monte leading-tight">
-                          {e.titulo}
-                        </span>
-                        <span
-                          className="text-monte/40 text-lg leading-none font-light transition-transform duration-300 group-open:rotate-45 shrink-0"
-                          aria-hidden
-                        >
-                          +
-                        </span>
-                      </summary>
-                      <div className="px-5 pb-5 pt-0 border-t border-monte/8 bg-hueso-light/40">
-                        <p className="text-sm italic text-monte/85 mt-3 mb-1.5">
-                          “{e.asunto}”
-                        </p>
-                        <p className="text-xs text-niebla leading-snug">
-                          {e.objetivo}
-                        </p>
-                      </div>
-                    </details>
-                  ))}
-                </div>
-              </div>
-
-              {/* Lead Scoring */}
-              <div className="mt-8 rounded-2xl border border-seagreen/25 bg-seagreen/5 p-6 md:p-7">
-                <div className="flex items-baseline gap-3 mb-3">
-                  <p className="font-mono text-3xl md:text-4xl font-semibold text-seagreen tabular">
-                    60
-                  </p>
-                  <p className="text-xs uppercase tracking-[0.18em] text-seagreen font-semibold">
-                    puntos · umbral
-                  </p>
-                </div>
-                <p className="text-sm md:text-base text-monte leading-relaxed">
-                  Catorce acciones puntuadas. Cuando alguien llega a 60 puntos,
-                  deja de hablar con el sistema y empieza a hablar con{" "}
-                  <span className="font-semibold">Toña o Mate por WhatsApp</span>.{" "}
-                  <span className="text-seagreen font-semibold">Sin guion.</span>
-                </p>
-              </div>
-            </div>
+          {/* Cuaderno + correos reales (panel dinámico) */}
+          <div className="mt-12">
+            <MaquinariaPreview />
           </div>
         </div>
 
@@ -451,86 +302,174 @@ export function Retencion() {
             </span>
           </h3>
 
-          {/* Big number $150M */}
-          <div className="mt-12 grid grid-cols-12 gap-x-8 gap-y-8 items-end">
-            <div className="col-span-12 lg:col-span-7">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-seagreen mb-4">
-                Ingresos adicionales · año 1 · CAC $0
-              </p>
-              <h4
-                className="display text-monte tabular flex items-start gap-3"
-                style={{
-                  fontSize: "clamp(4.5rem, 12vw, 14rem)",
-                  lineHeight: 0.88,
-                  letterSpacing: "-0.05em",
-                }}
-              >
-                $150
-                <span
-                  className="text-seagreen"
-                  style={{ fontSize: "clamp(2.5rem, 5vw, 5rem)", lineHeight: 1 }}
-                >
-                  M COP
-                </span>
-              </h4>
-              <p
-                className="display text-monte mt-2"
-                style={{
-                  fontSize: "clamp(1.25rem, 2.5vw, 1.75rem)",
-                  lineHeight: 1.05,
-                  letterSpacing: "-0.02em",
-                }}
-              >
-                al año, sin gastar un peso más en pauta.
-              </p>
-
-              <p className="mt-6 max-w-xl text-sm md:text-base text-carbon leading-relaxed">
-                Quince de cada cien que ya compraron, vuelven a comprar una vez
-                más en el año.{" "}
-                <span className="font-mono text-monte font-semibold">
-                  5.000 × 15% × $200K = $150M
-                </span>
-                .
-              </p>
-            </div>
-
-            <div className="col-span-12 lg:col-span-5 lg:pb-4">
-              <div className="space-y-3">
-                {[
-                  {
-                    metric: "ROI email",
-                    value: "~6.150%",
-                    sub: "cada peso invertido devuelve ~61",
-                  },
-                  {
-                    metric: "ROAS win-back",
-                    value: "~250x",
-                    sub: "campaña a base inactiva > 6 meses",
-                  },
-                  {
-                    metric: "LTV proyectado",
-                    value: "$220K → $385K",
-                    sub: "con frecuencia 1.4x y AOV $310K post-upsell",
-                  },
-                ].map((s) => (
-                  <div
-                    key={s.metric}
-                    className="rounded-xl border border-monte/10 bg-white px-5 py-4"
+          {/* Big number $150M — switch Sin / Con reactivación */}
+          <BeforeAfterToggle
+            className="mt-12"
+            beforeLabel="Lista dormida"
+            afterLabel="Lista activada"
+            ariaGroupLabel="Lista de clientes dormida hoy versus lista activada con sistema de email"
+            before={
+              <div className="grid grid-cols-12 gap-x-8 gap-y-8 items-end">
+                <div className="col-span-12 lg:col-span-7">
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-rojo-atratus mb-4">
+                    Ingresos adicionales · año 1 · CAC $0
+                  </p>
+                  <h4
+                    className="display text-monte tabular flex items-start gap-3"
+                    style={{
+                      fontSize: "clamp(4.5rem, 12vw, 14rem)",
+                      lineHeight: 0.88,
+                      letterSpacing: "-0.05em",
+                    }}
                   >
-                    <p className="text-[10px] uppercase tracking-[0.18em] text-niebla font-semibold mb-1">
-                      {s.metric}
-                    </p>
-                    <p className="font-mono text-xl font-semibold text-seagreen tabular">
-                      {s.value}
-                    </p>
-                    <p className="text-xs text-carbon mt-1 leading-snug">
-                      {s.sub}
-                    </p>
+                    $0
+                    <span
+                      className="text-rojo-atratus"
+                      style={{ fontSize: "clamp(2.5rem, 5vw, 5rem)", lineHeight: 1 }}
+                    >
+                      M COP
+                    </span>
+                  </h4>
+                  <p
+                    className="display text-monte mt-2"
+                    style={{
+                      fontSize: "clamp(1.25rem, 2.5vw, 1.75rem)",
+                      lineHeight: 1.05,
+                      letterSpacing: "-0.02em",
+                    }}
+                  >
+                    al año, mientras la pauta sigue trayendo clientes nuevos al mismo costo.
+                  </p>
+
+                  <p className="mt-6 max-w-xl text-sm md:text-base text-carbon leading-relaxed">
+                    Cinco mil clientes en la base. Ninguno ha recibido un correo desde la compra.{" "}
+                    <span className="font-mono text-monte font-semibold">
+                      5.000 × 0% × $200K = $0
+                    </span>
+                    . La lista existe, pero nadie le habla.
+                  </p>
+                </div>
+
+                <div className="col-span-12 lg:col-span-5 lg:pb-4">
+                  <div className="space-y-3">
+                    {[
+                      {
+                        metric: "ROI email",
+                        value: "N/A",
+                        sub: "no hay sistema de email automatizado activo",
+                      },
+                      {
+                        metric: "ROAS win-back",
+                        value: "N/A",
+                        sub: "ninguna campaña a base inactiva enviada",
+                      },
+                      {
+                        metric: "LTV proyectado",
+                        value: "$220K",
+                        sub: "frecuencia 1.1x · AOV $200K · estancado",
+                      },
+                    ].map((s) => (
+                      <div
+                        key={s.metric}
+                        className="rounded-xl border border-monte/10 bg-white px-5 py-4"
+                      >
+                        <p className="text-[10px] uppercase tracking-[0.18em] text-niebla font-semibold mb-1">
+                          {s.metric}
+                        </p>
+                        <p className="font-mono text-xl font-semibold text-rojo-atratus tabular">
+                          {s.value}
+                        </p>
+                        <p className="text-xs text-carbon mt-1 leading-snug">
+                          {s.sub}
+                        </p>
+                      </div>
+                    ))}
                   </div>
-                ))}
+                </div>
               </div>
-            </div>
-          </div>
+            }
+            after={
+              <div className="grid grid-cols-12 gap-x-8 gap-y-8 items-end">
+                <div className="col-span-12 lg:col-span-7">
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-seagreen mb-4">
+                    Ingresos adicionales · año 1 · CAC $0
+                  </p>
+                  <h4
+                    className="display text-monte tabular flex items-start gap-3"
+                    style={{
+                      fontSize: "clamp(4.5rem, 12vw, 14rem)",
+                      lineHeight: 0.88,
+                      letterSpacing: "-0.05em",
+                    }}
+                  >
+                    $150
+                    <span
+                      className="text-seagreen"
+                      style={{ fontSize: "clamp(2.5rem, 5vw, 5rem)", lineHeight: 1 }}
+                    >
+                      M COP
+                    </span>
+                  </h4>
+                  <p
+                    className="display text-monte mt-2"
+                    style={{
+                      fontSize: "clamp(1.25rem, 2.5vw, 1.75rem)",
+                      lineHeight: 1.05,
+                      letterSpacing: "-0.02em",
+                    }}
+                  >
+                    al año, sin gastar un peso más en pauta.
+                  </p>
+
+                  <p className="mt-6 max-w-xl text-sm md:text-base text-carbon leading-relaxed">
+                    Quince de cada cien que ya compraron, vuelven a comprar una vez
+                    más en el año.{" "}
+                    <span className="font-mono text-monte font-semibold">
+                      5.000 × 15% × $200K = $150M
+                    </span>
+                    .
+                  </p>
+                </div>
+
+                <div className="col-span-12 lg:col-span-5 lg:pb-4">
+                  <div className="space-y-3">
+                    {[
+                      {
+                        metric: "ROI email",
+                        value: "~6.150%",
+                        sub: "cada peso invertido devuelve ~61",
+                      },
+                      {
+                        metric: "ROAS win-back",
+                        value: "~250x",
+                        sub: "campaña a base inactiva > 6 meses",
+                      },
+                      {
+                        metric: "LTV proyectado",
+                        value: "$220K → $385K",
+                        sub: "con frecuencia 1.4x y AOV $310K post-upsell",
+                      },
+                    ].map((s) => (
+                      <div
+                        key={s.metric}
+                        className="rounded-xl border border-monte/10 bg-white px-5 py-4"
+                      >
+                        <p className="text-[10px] uppercase tracking-[0.18em] text-niebla font-semibold mb-1">
+                          {s.metric}
+                        </p>
+                        <p className="font-mono text-xl font-semibold text-seagreen tabular">
+                          {s.value}
+                        </p>
+                        <p className="text-xs text-carbon mt-1 leading-snug">
+                          {s.sub}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            }
+          />
 
           {/* 4 flujos por recencia */}
           <div className="mt-14">

@@ -1,5 +1,7 @@
 import Image from "next/image";
 import { RoleBadge } from "@/components/ui/RoleBadge";
+import { BeforeAfterToggle } from "@/components/ui/BeforeAfterToggle";
+import { MotorTabs } from "@/components/ui/MotorTabs";
 
 /* ============================================================
    §3 MOTOR DE ADQUISICIÓN · Head of Growth · Plan-operativo + Pedagógico
@@ -141,55 +143,95 @@ export function Motor() {
             </span>
           </div>
 
-          {/* Imagen cinemática · pantalla dividida — sin palabras encima */}
-          <figure className="relative w-full aspect-[2.36/1] overflow-hidden rounded-2xl bg-monte/5">
+          {/* Imagen cinemática con texto overlay — los dos frentes habitan la imagen */}
+          <figure
+            className="relative w-full aspect-[2.36/1] overflow-hidden rounded-2xl bg-monte/5"
+            aria-label="Bosque andino al amanecer en quietud (izquierda) y cascada de páramo en pleno movimiento (derecha) — los dos frentes del motor de adquisición de Atratus"
+          >
             <Image
               src="/atratus/marca/motor-dos-frentes.png"
-              alt="Bosque andino al amanecer en quietud (izquierda) y cascada de páramo en pleno movimiento (derecha) — los dos frentes del motor de adquisición de Atratus"
+              alt=""
               fill
               quality={92}
               priority
               sizes="(max-width: 1024px) 100vw, 90vw"
               className="object-cover"
             />
-            {/* Línea divisoria sutil al centro */}
+
+            {/* Gradients de legibilidad — oscuro en bordes, claro al centro */}
             <div
-              className="absolute inset-y-0 left-1/2 w-px bg-white/20 mix-blend-overlay"
+              className="absolute inset-y-0 left-0 w-3/5 bg-gradient-to-r from-monte/85 via-monte/45 to-transparent"
               aria-hidden
             />
-          </figure>
+            <div
+              className="absolute inset-y-0 right-0 w-3/5 bg-gradient-to-l from-monte/85 via-monte/45 to-transparent"
+              aria-hidden
+            />
 
-          {/* Caption — dos columnas, una por cada frente */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-y-4 gap-x-10 max-w-4xl">
-            <div className="flex items-baseline gap-3">
-              <span
-                className="h-1.5 w-1.5 rounded-full bg-monte/60 shrink-0 translate-y-1"
-                aria-hidden
-              />
-              <div>
-                <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-niebla mb-1">
-                  El que trabaja gratis
+            {/* Línea divisoria sutil al centro */}
+            <div
+              className="absolute inset-y-0 left-1/2 w-px bg-white/25 mix-blend-overlay"
+              aria-hidden
+            />
+
+            {/* Texto overlay — 2 columnas, anclado abajo en cada mitad */}
+            <div className="absolute inset-0 grid grid-cols-2">
+              {/* Izquierda · SEO sobre el bosque */}
+              <div className="flex flex-col justify-end items-start p-5 md:p-8 lg:p-12">
+                <div className="flex items-center gap-2 mb-3">
+                  <span
+                    className="h-1.5 w-1.5 rounded-full bg-white/70 animate-pulse-dot"
+                    aria-hidden
+                  />
+                  <p className="text-[10px] md:text-[11px] font-semibold uppercase tracking-[0.24em] text-white/80">
+                    El que trabaja gratis
+                  </p>
+                </div>
+                <h3
+                  className="display text-white"
+                  style={{
+                    fontSize: "clamp(1.5rem, 3.6vw, 2.75rem)",
+                    lineHeight: 1.02,
+                    letterSpacing: "-0.025em",
+                  }}
+                >
+                  SEO orgánico.
+                </h3>
+                <p className="mt-2 text-xs md:text-sm lg:text-base text-white/75 leading-snug">
+                  24/7 · sin costo por click
                 </p>
-                <p className="text-sm md:text-base text-monte font-medium leading-snug">
-                  SEO orgánico · 24/7 · sin costo por click
+              </div>
+
+              {/* Derecha · Pauta sobre la cascada */}
+              <div className="flex flex-col justify-end items-end text-right p-5 md:p-8 lg:p-12">
+                <div className="flex items-center gap-2 mb-3">
+                  <p
+                    className="text-[10px] md:text-[11px] font-semibold uppercase tracking-[0.24em] text-white/80"
+                  >
+                    El que acelera
+                  </p>
+                  <span
+                    className="h-1.5 w-1.5 rounded-full animate-pulse-dot"
+                    style={{ background: "var(--color-deep-blue)" }}
+                    aria-hidden
+                  />
+                </div>
+                <h3
+                  className="display text-white"
+                  style={{
+                    fontSize: "clamp(1.5rem, 3.6vw, 2.75rem)",
+                    lineHeight: 1.02,
+                    letterSpacing: "-0.025em",
+                  }}
+                >
+                  Pauta digital.
+                </h3>
+                <p className="mt-2 text-xs md:text-sm lg:text-base text-white/75 leading-snug">
+                  Google + Meta · 3 campañas
                 </p>
               </div>
             </div>
-            <div className="flex items-baseline gap-3">
-              <span
-                className="h-1.5 w-1.5 rounded-full bg-deep-blue shrink-0 translate-y-1"
-                aria-hidden
-              />
-              <div>
-                <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-deep-blue mb-1">
-                  El que acelera
-                </p>
-                <p className="text-sm md:text-base text-monte font-medium leading-snug">
-                  Pauta digital · Google + Meta · 3 campañas
-                </p>
-              </div>
-            </div>
-          </div>
+          </figure>
 
           <p className="text-base md:text-lg lg:text-xl text-carbon leading-relaxed max-w-3xl">
             El SEO atrae a los que ya están buscando, sin pagar un peso. La
@@ -198,16 +240,12 @@ export function Motor() {
           </p>
         </header>
 
-        {/* ============== FRENTE 1 · SEO ORGÁNICO ============== */}
-        <div className="mt-16 md:mt-24">
-          <div className="flex items-center gap-3 mb-4">
-            <span className="h-1.5 w-1.5 rounded-full bg-deep-blue" aria-hidden />
-            <span className="text-[11px] font-semibold uppercase tracking-[0.22em] text-deep-blue">
-              Frente 1 · El que trabaja gratis
-            </span>
-          </div>
-
-          {/* Big number + competencia hoy */}
+        {/* ============== TABS · SEO vs PUBLICIDAD ============== */}
+        <MotorTabs
+          className="mt-16 md:mt-24"
+          seoContent={
+            <div>
+              {/* Big number + competencia hoy */}
           <div className="grid grid-cols-12 gap-x-8 gap-y-10 items-start">
             <div className="col-span-12 lg:col-span-7">
               <div className="font-mono text-xs uppercase tracking-[0.18em] text-niebla mb-3">
@@ -495,127 +533,224 @@ export function Motor() {
             </div>
           </div>
 
-        </div>
-
-        {/* ============== FRENTE 2 · PAUTA ============== */}
-        <div className="mt-24 md:mt-32">
-          <div className="flex items-center gap-3 mb-4">
-            <span className="h-1.5 w-1.5 rounded-full bg-deep-blue" aria-hidden />
-            <span className="text-[11px] font-semibold uppercase tracking-[0.22em] text-deep-blue">
-              Frente 2 · El que acelera
-            </span>
-          </div>
-
-          <h3
-            className="display text-monte max-w-4xl"
-            style={{
-              fontSize: "clamp(2rem, 5vw, 4rem)",
-              lineHeight: 1,
-              letterSpacing: "-0.03em",
-            }}
-          >
-            Tres campañas.{" "}
-            <span className="text-monte/55">
-              Tres gatillos que el calendario ya pone.
-            </span>
-          </h3>
-
-          {/* Strip negro con 4 stats */}
-          <div className="mt-10">
-            <div className="rounded-2xl bg-monte text-white p-7 md:p-9 lg:p-10 relative overflow-hidden">
-              <div
-                className="absolute inset-x-0 top-0 h-[3px] bg-deep-blue"
-                aria-hidden
-              />
-              <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-8 gap-x-8 lg:gap-x-12">
-                <div>
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-white/50 mb-3">
-                    Presupuesto
-                  </p>
-                  <p
-                    className="display text-white tabular"
-                    style={{
-                      fontSize: "clamp(1.75rem, 2.8vw, 2.5rem)",
-                      lineHeight: 1,
-                      letterSpacing: "-0.03em",
-                    }}
-                  >
-                    $6 M
-                    <span className="text-base font-medium text-white/60 ml-1">
-                      COP
-                    </span>
-                  </p>
-                  <p className="mt-2 text-xs text-white/55">
-                    Total · 2 meses
-                  </p>
-                </div>
-                <div>
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-white/50 mb-3">
-                    Ingresos directos F1
-                  </p>
-                  <p
-                    className="display text-white tabular"
-                    style={{
-                      fontSize: "clamp(1.75rem, 2.8vw, 2.5rem)",
-                      lineHeight: 1,
-                      letterSpacing: "-0.03em",
-                    }}
-                  >
-                    $22,4 M
-                    <span className="text-base font-medium text-white/60 ml-1">
-                      COP
-                    </span>
-                  </p>
-                  <p className="mt-2 text-xs text-white/55">
-                    Atribución directa · 2 meses
-                  </p>
-                </div>
-                <div>
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-white/50 mb-3">
-                    ROAS Blended F1
-                  </p>
-                  <p
-                    className="display tabular"
-                    style={{
-                      fontSize: "clamp(1.75rem, 2.8vw, 2.5rem)",
-                      lineHeight: 1,
-                      letterSpacing: "-0.03em",
-                      color: "#9fb8e0",
-                    }}
-                  >
-                    3.74x
-                  </p>
-                  <p className="mt-2 text-xs text-white/55">
-                    Sube a 4.83x en Fase 2 (mes 3+)
-                  </p>
-                </div>
-                <div>
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-white/50 mb-3">
-                    Pool retargeting
-                  </p>
-                  <p
-                    className="display text-white tabular"
-                    style={{
-                      fontSize: "clamp(1.75rem, 2.8vw, 2.5rem)",
-                      lineHeight: 1,
-                      letterSpacing: "-0.03em",
-                    }}
-                  >
-                    92K
-                  </p>
-                  <p className="mt-2 text-xs text-white/55">
-                    Audiencias custom al cerrar
-                  </p>
-                </div>
-              </div>
             </div>
-            <p className="mt-4 text-xs text-niebla max-w-3xl leading-relaxed">
-              ROAS realista por temperatura de audiencia · BOFU 5.5x · MOFU 2.5x · TOFU 1.2x.
-              El TOFU no se mide por venta directa — se mide por el pool que deja construido para
-              que Fase 2 lo cosechee con ROAS 4.83x. Proyección con AOV $200K COP. No es promesa,
-              es escenario base auditable.
-            </p>
-          </div>
+          }
+          pautaContent={
+            <div>
+              <h3
+                className="display text-monte max-w-4xl"
+                style={{
+                  fontSize: "clamp(2rem, 5vw, 4rem)",
+                  lineHeight: 1,
+                  letterSpacing: "-0.03em",
+                }}
+              >
+                Tres campañas.{" "}
+                <span className="text-monte/55">
+                  Tres gatillos que el calendario ya pone.
+                </span>
+              </h3>
+
+          {/* Strip negro con 4 stats — switch Sin / Con motor integrado */}
+          <BeforeAfterToggle
+            className="mt-10"
+            beforeLabel="Pauta artesanal"
+            afterLabel="Motor integrado"
+            ariaGroupLabel="Pauta artesanal sin sistema versus motor integrado SEO más pauta"
+            before={
+              <>
+                <div className="rounded-2xl bg-monte text-white p-7 md:p-9 lg:p-10 relative overflow-hidden">
+                  <div
+                    className="absolute inset-x-0 top-0 h-[3px] bg-rojo-atratus"
+                    aria-hidden
+                  />
+                  <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-8 gap-x-8 lg:gap-x-12">
+                    <div>
+                      <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-white/50 mb-3">
+                        Presupuesto
+                      </p>
+                      <p
+                        className="display text-white tabular"
+                        style={{
+                          fontSize: "clamp(1.75rem, 2.8vw, 2.5rem)",
+                          lineHeight: 1,
+                          letterSpacing: "-0.03em",
+                        }}
+                      >
+                        $6 M
+                        <span className="text-base font-medium text-white/60 ml-1">
+                          COP
+                        </span>
+                      </p>
+                      <p className="mt-2 text-xs text-white/55">
+                        Igual — el dinero ya se tiene
+                      </p>
+                    </div>
+                    <div>
+                      <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-white/50 mb-3">
+                        Ingresos directos F1
+                      </p>
+                      <p
+                        className="display tabular"
+                        style={{
+                          fontSize: "clamp(1.75rem, 2.8vw, 2.5rem)",
+                          lineHeight: 1,
+                          letterSpacing: "-0.03em",
+                          color: "var(--color-rojo-atratus)",
+                        }}
+                      >
+                        ?
+                      </p>
+                      <p className="mt-2 text-xs text-white/55">
+                        Sin pixel ni UTM, no se mide
+                      </p>
+                    </div>
+                    <div>
+                      <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-white/50 mb-3">
+                        ROAS Blended F1
+                      </p>
+                      <p
+                        className="display tabular"
+                        style={{
+                          fontSize: "clamp(1.75rem, 2.8vw, 2.5rem)",
+                          lineHeight: 1,
+                          letterSpacing: "-0.03em",
+                          color: "var(--color-rojo-atratus)",
+                        }}
+                      >
+                        ?
+                      </p>
+                      <p className="mt-2 text-xs text-white/55">
+                        Sin atribución, va a ciegas
+                      </p>
+                    </div>
+                    <div>
+                      <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-white/50 mb-3">
+                        Pool retargeting
+                      </p>
+                      <p
+                        className="display tabular"
+                        style={{
+                          fontSize: "clamp(1.75rem, 2.8vw, 2.5rem)",
+                          lineHeight: 1,
+                          letterSpacing: "-0.03em",
+                          color: "var(--color-rojo-atratus)",
+                        }}
+                      >
+                        0
+                      </p>
+                      <p className="mt-2 text-xs text-white/55">
+                        Sin estructura para construirlo
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <p className="mt-4 text-xs text-niebla max-w-3xl leading-relaxed">
+                  Pauta artesanal: IG orgánico más algún post promocionado. Sin Meta Pixel,
+                  sin UTM, sin Google Analytics conectado. El dinero se gasta, pero ningún
+                  número regresa. Las audiencias frías nunca alimentan a las calientes.
+                  Cada peso se gasta una sola vez.
+                </p>
+              </>
+            }
+            after={
+              <>
+                <div className="rounded-2xl bg-monte text-white p-7 md:p-9 lg:p-10 relative overflow-hidden">
+                  <div
+                    className="absolute inset-x-0 top-0 h-[3px] bg-deep-blue"
+                    aria-hidden
+                  />
+                  <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-8 gap-x-8 lg:gap-x-12">
+                    <div>
+                      <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-white/50 mb-3">
+                        Presupuesto
+                      </p>
+                      <p
+                        className="display text-white tabular"
+                        style={{
+                          fontSize: "clamp(1.75rem, 2.8vw, 2.5rem)",
+                          lineHeight: 1,
+                          letterSpacing: "-0.03em",
+                        }}
+                      >
+                        $6 M
+                        <span className="text-base font-medium text-white/60 ml-1">
+                          COP
+                        </span>
+                      </p>
+                      <p className="mt-2 text-xs text-white/55">
+                        Total · 2 meses
+                      </p>
+                    </div>
+                    <div>
+                      <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-white/50 mb-3">
+                        Ingresos directos F1
+                      </p>
+                      <p
+                        className="display text-white tabular"
+                        style={{
+                          fontSize: "clamp(1.75rem, 2.8vw, 2.5rem)",
+                          lineHeight: 1,
+                          letterSpacing: "-0.03em",
+                        }}
+                      >
+                        $22,4 M
+                        <span className="text-base font-medium text-white/60 ml-1">
+                          COP
+                        </span>
+                      </p>
+                      <p className="mt-2 text-xs text-white/55">
+                        Atribución directa · 2 meses
+                      </p>
+                    </div>
+                    <div>
+                      <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-white/50 mb-3">
+                        ROAS Blended F1
+                      </p>
+                      <p
+                        className="display tabular"
+                        style={{
+                          fontSize: "clamp(1.75rem, 2.8vw, 2.5rem)",
+                          lineHeight: 1,
+                          letterSpacing: "-0.03em",
+                          color: "#9fb8e0",
+                        }}
+                      >
+                        3.74x
+                      </p>
+                      <p className="mt-2 text-xs text-white/55">
+                        Sube a 4.83x en Fase 2 (mes 3+)
+                      </p>
+                    </div>
+                    <div>
+                      <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-white/50 mb-3">
+                        Pool retargeting
+                      </p>
+                      <p
+                        className="display text-white tabular"
+                        style={{
+                          fontSize: "clamp(1.75rem, 2.8vw, 2.5rem)",
+                          lineHeight: 1,
+                          letterSpacing: "-0.03em",
+                        }}
+                      >
+                        92K
+                      </p>
+                      <p className="mt-2 text-xs text-white/55">
+                        Audiencias custom al cerrar
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <p className="mt-4 text-xs text-niebla max-w-3xl leading-relaxed">
+                  ROAS realista por temperatura de audiencia · BOFU 5.5x · MOFU 2.5x · TOFU 1.2x.
+                  El TOFU no se mide por venta directa — se mide por el pool que deja construido para
+                  que Fase 2 lo cosechee con ROAS 4.83x. Proyección con AOV $200K COP. No es promesa,
+                  es escenario base auditable.
+                </p>
+              </>
+            }
+          />
 
           {/* Las 3 campañas */}
           <div className="mt-14">
@@ -777,7 +912,9 @@ export function Motor() {
             </div>
           </div>
 
-        </div>
+            </div>
+          }
+        />
 
       </div>
     </section>

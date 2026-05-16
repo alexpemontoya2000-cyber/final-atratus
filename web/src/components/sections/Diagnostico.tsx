@@ -1,10 +1,12 @@
 import { RoleBadge } from "@/components/ui/RoleBadge";
 import { StatCard } from "@/components/ui/StatCard";
+import { CompetidoresModal } from "@/components/ui/CompetidoresModal";
+import { BeforeAfterToggle } from "@/components/ui/BeforeAfterToggle";
 
 /* ============================================================
    §1 DIAGNÓSTICO · CMO/Estratega · Manifiesto + Comercial-cierre
    SCQA: Situation + Complication · 2:00 min
-   3 bloques: A) El 70%  B) DOFA + CAME  C) 5 Objetivos SMART
+   4 bloques: A) El 70%  B) DOFA + CAME  C) 5 SMART  D) Competidores
    ============================================================ */
 
 // — Bloque B · DOFA + CAME (datos del docx Plan FINAL Atratus)
@@ -238,117 +240,232 @@ export function Diagnostico() {
           </div>
         </header>
 
-        {/* ============== BLOQUE A · EL 70% ============== */}
-        <div className="mt-14 md:mt-20 grid grid-cols-12 gap-x-8 gap-y-10 items-end">
-          <div className="col-span-12 lg:col-span-7">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-rojo-atratus mb-4">
-              El número que duele
-            </p>
-            <h3
-              className="display text-monte tabular"
-              style={{
-                fontSize: "clamp(6rem, 18vw, 20rem)",
-                lineHeight: 0.85,
-                letterSpacing: "-0.05em",
-              }}
-            >
-              70<span className="text-rojo-atratus">%</span>
-            </h3>
-            <p
-              className="display text-monte mt-2"
-              style={{
-                fontSize: "clamp(1.5rem, 3.5vw, 3rem)",
-                lineHeight: 1,
-                letterSpacing: "-0.02em",
-              }}
-            >
-              no vuelve.
-            </p>
+        {/* ============== BLOQUE A · EL 70% (switch Sin / Con sistema) ============== */}
+        <BeforeAfterToggle
+          className="mt-14 md:mt-20"
+          ariaGroupLabel="Atratus sin sistema versus Atratus con sistema digital activo"
+          before={
+            <>
+              <div className="grid grid-cols-12 gap-x-8 gap-y-10 items-end">
+                <div className="col-span-12 lg:col-span-7">
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-rojo-atratus mb-4">
+                    El número que duele
+                  </p>
+                  <h3
+                    className="display text-monte tabular"
+                    style={{
+                      fontSize: "clamp(6rem, 18vw, 20rem)",
+                      lineHeight: 0.85,
+                      letterSpacing: "-0.05em",
+                    }}
+                  >
+                    70<span className="text-rojo-atratus">%</span>
+                  </h3>
+                  <p
+                    className="display text-monte mt-2"
+                    style={{
+                      fontSize: "clamp(1.5rem, 3.5vw, 3rem)",
+                      lineHeight: 1,
+                      letterSpacing: "-0.02em",
+                    }}
+                  >
+                    no vuelve.
+                  </p>
 
-            {/* Cita Bluecore — el sector confirma */}
-            <div className="mt-6 flex items-start gap-2.5 max-w-xl">
-              <span
-                className="h-1.5 w-1.5 rounded-full bg-atratus-verde mt-2 shrink-0"
-                aria-hidden
-              />
-              <p className="text-[11px] uppercase tracking-[0.16em] text-niebla leading-relaxed">
-                Y no es solo Atratus.{" "}
-                <span className="text-monte font-semibold normal-case tracking-normal">
-                  El sector outdoor a nivel global recompra apenas 21,2 %
-                </span>{" "}
-                <span className="text-monte/60 normal-case tracking-normal">
-                  — Bluecore Customer Growth Benchmarks 2024, sobre 100+ retailers.
-                </span>
-              </p>
-            </div>
-          </div>
+                  <div className="mt-6 flex items-start gap-2.5 max-w-xl">
+                    <span
+                      className="h-1.5 w-1.5 rounded-full bg-atratus-verde mt-2 shrink-0"
+                      aria-hidden
+                    />
+                    <p className="text-[11px] uppercase tracking-[0.16em] text-niebla leading-relaxed">
+                      Y no es solo Atratus.{" "}
+                      <span className="text-monte font-semibold normal-case tracking-normal">
+                        El sector outdoor a nivel global recompra apenas 21,2 %
+                      </span>{" "}
+                      <span className="text-monte/60 normal-case tracking-normal">
+                        — Bluecore Customer Growth Benchmarks 2024, sobre 100+ retailers.
+                      </span>
+                    </p>
+                  </div>
+                </div>
 
-          <div className="col-span-12 lg:col-span-5 lg:pb-4">
-            <p className="text-lg md:text-xl text-monte leading-relaxed font-medium">
-              De cada diez personas que entran a Atratus, siete no regresan.
-            </p>
-            <p className="mt-5 text-base md:text-lg text-carbon leading-relaxed">
-              Cinco mil clientes históricos. Setenta y ocho mil personas en
-              Instagram.{" "}
-              <span className="text-niebla">
-                Y la mayoría de los que compran solo lo hacen una vez. La pauta
-                trae gente nueva, pero sin sistema atrás está reemplazando a la
-                que se fue.
-              </span>
-            </p>
-          </div>
-        </div>
+                <div className="col-span-12 lg:col-span-5 lg:pb-4">
+                  <p className="text-lg md:text-xl text-monte leading-relaxed font-medium">
+                    De cada diez personas que entran a Atratus, siete no regresan.
+                  </p>
+                  <p className="mt-5 text-base md:text-lg text-carbon leading-relaxed">
+                    Cinco mil clientes históricos. Setenta y ocho mil personas en
+                    Instagram.{" "}
+                    <span className="text-niebla">
+                      Y la mayoría de los que compran solo lo hacen una vez. La pauta
+                      trae gente nueva, pero sin sistema atrás está reemplazando a la
+                      que se fue.
+                    </span>
+                  </p>
+                </div>
+              </div>
 
-        {/* Línea separadora */}
-        <div className="mt-16 md:mt-20 mb-12 md:mb-14 h-px bg-monte/10" />
+              <div className="mt-16 md:mt-20 mb-12 md:mb-14 h-px bg-monte/10" />
 
-        {/* Stats grid */}
-        <div>
-          <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-niebla mb-6">
-            Lo que muestran los números
-          </p>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
-            <StatCard
-              label="Churn rate"
-              value="70"
-              suffix="%"
-              hint="7 de cada 10 clientes no regresan"
-              delta={{ value: "Crítico", direction: "down" }}
-            />
-            <StatCard
-              label="Frecuencia de compra"
-              value="1.1"
-              suffix="x/año"
-              hint="Compra única en la mayoría de los casos"
-              delta={{ value: "Baja", direction: "down" }}
-            />
-            <StatCard
-              label="Ticket promedio"
-              value="200"
-              prefix="~$"
-              suffix="K COP"
-              hint="Una prenda por carrito (ej. una chaqueta)"
-              delta={{ value: "Estancado", direction: "neutral" }}
-            />
-            <StatCard
-              label="Valor por cliente"
-              value="220"
-              prefix="~$"
-              suffix="K COP"
-              hint="Lo que Atratus le saca a un cliente en TODA su relación"
-              delta={{ value: "Sub-óptimo", direction: "down" }}
-            />
-          </div>
-          <p className="mt-5 text-xs text-niebla leading-relaxed max-w-3xl">
-            <span className="font-semibold text-monte normal-case">
-              Cómo se lee:
-            </span>{" "}
-            ticket promedio estimado a partir de los precios reales del catálogo
-            ($159K–$215K por prenda) y una unidad por carrito. Valor por cliente
-            = ticket × frecuencia (1.1) — porque la mayoría compra una sola vez
-            y desaparece, no se acumula recompra a lo largo del tiempo.
-          </p>
-        </div>
+              <div>
+                <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-niebla mb-6">
+                  Lo que muestran los números
+                </p>
+                <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
+                  <StatCard
+                    label="Churn rate"
+                    value="70"
+                    suffix="%"
+                    hint="7 de cada 10 clientes no regresan"
+                    delta={{ value: "Crítico", direction: "down" }}
+                  />
+                  <StatCard
+                    label="Frecuencia de compra"
+                    value="1.1"
+                    suffix="x/año"
+                    hint="Compra única en la mayoría de los casos"
+                    delta={{ value: "Baja", direction: "down" }}
+                  />
+                  <StatCard
+                    label="Ticket promedio"
+                    value="200"
+                    prefix="~$"
+                    suffix="K COP"
+                    hint="Una prenda por carrito (ej. una chaqueta)"
+                    delta={{ value: "Estancado", direction: "neutral" }}
+                  />
+                  <StatCard
+                    label="Valor por cliente"
+                    value="220"
+                    prefix="~$"
+                    suffix="K COP"
+                    hint="Lo que Atratus le saca a un cliente en TODA su relación"
+                    delta={{ value: "Sub-óptimo", direction: "down" }}
+                  />
+                </div>
+                <p className="mt-5 text-xs text-niebla leading-relaxed max-w-3xl">
+                  <span className="font-semibold text-monte normal-case">
+                    Cómo se lee:
+                  </span>{" "}
+                  ticket promedio estimado a partir de los precios reales del catálogo
+                  ($159K–$215K por prenda) y una unidad por carrito. Valor por cliente
+                  = ticket × frecuencia (1.1) — porque la mayoría compra una sola vez
+                  y desaparece, no se acumula recompra a lo largo del tiempo.
+                </p>
+              </div>
+            </>
+          }
+          after={
+            <>
+              <div className="grid grid-cols-12 gap-x-8 gap-y-10 items-end">
+                <div className="col-span-12 lg:col-span-7">
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-atratus-verde mb-4">
+                    El número que ya cede
+                  </p>
+                  <h3
+                    className="display text-monte tabular"
+                    style={{
+                      fontSize: "clamp(6rem, 18vw, 20rem)",
+                      lineHeight: 0.85,
+                      letterSpacing: "-0.05em",
+                    }}
+                  >
+                    55<span className="text-atratus-verde">%</span>
+                  </h3>
+                  <p
+                    className="display text-monte mt-2"
+                    style={{
+                      fontSize: "clamp(1.5rem, 3.5vw, 3rem)",
+                      lineHeight: 1,
+                      letterSpacing: "-0.02em",
+                    }}
+                  >
+                    cede en 12 meses.
+                  </p>
+
+                  <div className="mt-6 flex items-start gap-2.5 max-w-xl">
+                    <span
+                      className="h-1.5 w-1.5 rounded-full bg-seagreen mt-2 shrink-0"
+                      aria-hidden
+                    />
+                    <p className="text-[11px] uppercase tracking-[0.16em] text-niebla leading-relaxed">
+                      Quince puntos menos.{" "}
+                      <span className="text-monte font-semibold normal-case tracking-normal">
+                        Los 45 % que se quedan vuelven 1,4 veces al año
+                      </span>{" "}
+                      <span className="text-monte/60 normal-case tracking-normal">
+                        — el doble del benchmark sector. Es la meta SMART #2, no una promesa.
+                      </span>
+                    </p>
+                  </div>
+                </div>
+
+                <div className="col-span-12 lg:col-span-5 lg:pb-4">
+                  <p className="text-lg md:text-xl text-monte leading-relaxed font-medium">
+                    De cada diez que entran, cuatro y media vuelven al menos una vez más.
+                  </p>
+                  <p className="mt-5 text-base md:text-lg text-carbon leading-relaxed">
+                    Mismo IG, mismos ochenta y un mil seguidores, misma pauta.{" "}
+                    <span className="text-niebla">
+                      Cambia que atrás hay un sistema que captura el correo, manda los
+                      tres correos de la primera semana y vuelve a buscar al cliente
+                      a los 30 días. La gente que la pauta trajo, ahora se queda.
+                    </span>
+                  </p>
+                </div>
+              </div>
+
+              <div className="mt-16 md:mt-20 mb-12 md:mb-14 h-px bg-monte/10" />
+
+              <div>
+                <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-niebla mb-6">
+                  Hacia dónde se mueven los números
+                </p>
+                <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
+                  <StatCard
+                    label="Churn rate"
+                    value="55"
+                    suffix="%"
+                    hint="Meta SMART #2 · 12 meses · CRM + email retención"
+                    delta={{ value: "−15 pts", direction: "up" }}
+                  />
+                  <StatCard
+                    label="Frecuencia de compra"
+                    value="1.4"
+                    suffix="x/año"
+                    hint="Meta SMART #5 · 12 meses · email D14 + win-back"
+                    delta={{ value: "+27 %", direction: "up" }}
+                  />
+                  <StatCard
+                    label="Ticket promedio"
+                    value="310"
+                    prefix="$"
+                    suffix="K COP"
+                    hint="Meta SMART #1 · 6 meses · cascada upsell en checkout"
+                    delta={{ value: "+55 %", direction: "up" }}
+                  />
+                  <StatCard
+                    label="Valor por cliente"
+                    value="385"
+                    prefix="$"
+                    suffix="K COP"
+                    hint="LTV proyectado con AOV $310K + cascada y freq 1,4× — Plan §4"
+                    delta={{ value: "+75 %", direction: "up" }}
+                  />
+                </div>
+                <p className="mt-5 text-xs text-niebla leading-relaxed max-w-3xl">
+                  <span className="font-semibold text-monte normal-case">
+                    Cómo se lee:
+                  </span>{" "}
+                  ninguna cifra es promesa. Las metas de churn, frecuencia y AOV son
+                  los SMART del Bloque C — Plan Estratégico Atratus 2026-2027. LTV $385K
+                  es la proyección que ya entrega §4 Retención. Mismo tráfico, mismo IG —
+                  cambia el sistema, no la marca.
+                </p>
+              </div>
+            </>
+          }
+        />
 
         {/* ============== BLOQUE B · DOFA + CAME ============== */}
         <div className="mt-24 md:mt-32">
@@ -500,6 +617,36 @@ export function Diagnostico() {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+
+        {/* ============== BLOQUE D · COMPETIDORES ============== */}
+        <div className="mt-24 md:mt-32">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-niebla mb-4">
+            La cancha de afuera
+          </p>
+          <h3
+            className="display text-monte max-w-3xl"
+            style={{
+              fontSize: "clamp(1.75rem, 4vw, 3rem)",
+              lineHeight: 1.05,
+              letterSpacing: "-0.025em",
+              textWrap: "balance",
+            }}
+          >
+            Atratus no está sola en el monte.{" "}
+            <span className="text-monte/55">
+              Pero nadie pelea outdoor antioqueño con sistema digital prendido.
+            </span>
+          </h3>
+
+          <p className="mt-6 max-w-2xl text-base md:text-lg text-carbon leading-relaxed">
+            Tres marcas y Atratus, lado a lado. Mirá primero solo la marca.
+            Después prendé el sistema digital — ahí se ve la ventana.
+          </p>
+
+          <div className="mt-9">
+            <CompetidoresModal />
           </div>
         </div>
 

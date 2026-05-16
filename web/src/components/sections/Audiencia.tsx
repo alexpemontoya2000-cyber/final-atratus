@@ -1,5 +1,6 @@
 import { RoleBadge } from "@/components/ui/RoleBadge";
 import { PersonaCard } from "@/components/ui/PersonaCard";
+import { DeseoDelDiaSlider } from "@/components/ui/DeseoDelDiaSlider";
 
 export function Audiencia() {
   return (
@@ -38,30 +39,9 @@ export function Audiencia() {
           </h2>
         </header>
 
-        {/* Frase de fondo — el deseo compartido */}
-        <div className="mt-12 md:mt-16 max-w-3xl">
-          <div className="rounded-2xl border border-monte/12 bg-hueso-light p-6 md:p-8">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-niebla mb-4">
-              El deseo de fondo (común a los tres)
-            </p>
-            <p
-              className="display text-monte"
-              style={{
-                fontSize: "clamp(1.2rem, 2.2vw, 1.65rem)",
-                lineHeight: 1.25,
-                letterSpacing: "-0.015em",
-                textWrap: "balance",
-              }}
-            >
-              Buscan una sola prenda que aguante el clima cambiante de Colombia.
-              Cómoda en la subida, resistente en la trocha, que respire cuando
-              el sol pega a las once y abrigue cuando vuelve la niebla.{" "}
-              <span className="text-atratus-verde">
-                Y sobre todo sin bochorno — el bochorno es lo peor que les puede
-                pasar caminando seis horas.
-              </span>
-            </p>
-          </div>
+        {/* Frase de fondo — el deseo compartido (slider de 4 paradas) */}
+        <div className="mt-12 md:mt-16 max-w-5xl">
+          <DeseoDelDiaSlider />
         </div>
 
         {/* Grid de 3 personas */}
